@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus-Jhikargacha v7.0 | Advanced Hub & Gateway</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind_Siliguri:wght@400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Hind Siliguri', sans-serif; background: #030712; }
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        
+        .cyber-gradient {
+            background: radial-gradient(circle at 50% 30%, #0b1528 0%, #030712 100%);
+        }
+
+        /* Glassmorphism Styling */
+        .glass-panel { 
+            background: rgba(15, 23, 42, 0.4); 
+            backdrop-filter: blur(16px); 
+            border: 1px solid rgba(255, 255, 255, 0.04); 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-panel:hover {
+            border-color: rgba(16, 185, 129, 0.25);
+            background: rgba(15, 23, 42, 0.55);
+            box-shadow: 0 15px 35px -10px rgba(16, 185, 129, 0.15);
+        }
+
+        .auth-glass {
+            background: rgba(11, 15, 25, 0.65);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(16, 185, 129, 0.05);
+        }
+
+        .neon-text-green { text-shadow: 0 0 12px rgba(16, 185, 129, 0.5); }
+        .active-tab { 
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%); 
+            color: #030712; 
+            font-weight: 700; 
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: #030712; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+        .fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="cyber-gradient text-slate-100 min-h-screen flex flex-col justify-center items-center p-4 selection:bg-emerald-500 selection:text-slate-950">
+
+    <div id="auth-screen" class="w-full max-w-md auth-glass rounded-3xl p-8 fade-in z-50">
+        <div class="text-center mb-8">
+            <div class="inline-flex p-3.5 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 mb-3">
+                <i class="fa-solid fa-fingerprint text-emerald-400 text-3xl"></i>
+            </div>
+            <h2 class="text-2xl font-black font-orbitron tracking-wider text-emerald-400 neon-text-green">KNWEB SECURE GATEWAY</h2>
+            <p id="auth-subtitle" class="text-xs text-slate-400 mt-1">ঝিকরগাছা স্মার্ট ড্যাশবোর্ডে প্রবেশ করতে লগইন করুন</p>
+        </div>
+
+        <form id="auth-form" onsubmit="handleAuthEngine(event)" class="space-y-4">
+            <div>
+                <label class="block text-[11px] text-slate-400 font-bold uppercase tracking-wider mb-1.5">ইউজারনেম (Username)</label>
+                <div class="relative">
+                    <i class="fa-solid fa-user absolute left-3.5 top-3.5 text-slate-500 text-xs"></i>
+                    <input type="text" id="auth-user" placeholder="ইউজারনেম দিন" required class="w-full bg-slate-950/80 border border-slate-800 rounded-xl py-2.5 pl-10 pr-4 text-xs focus:outline-none focus:border-emerald-500 text-slate-200 transition-all">
+                </div>
+            </div>
+            <div>
+                <label class="block text-[11px] text-slate-400 font-bold uppercase tracking-wider mb-1.5">পাসওয়ার্ড (Password)</label>
+                <div class="relative">
+                    <i class="fa-solid fa-lock absolute left-3.5 top-3.5 text-slate-500 text-xs"></i>
+                    <input type="password" id="auth-pass" placeholder="••••••••" required class="w-full bg-slate-950/80 border border-slate-800 rounded-xl py-2.5 pl-10 pr-4 text-xs focus:outline-none focus:border-emerald-500 text-slate-200 transition-all">
+                </div>
+            </div>
+
+            <div id="auth-error" class="hidden bg-red-500/10 border border-red-500/20 text-red-400 p-2.5 rounded-xl text-center text-xs font-semibold">
+                 ভুল ক্রেডেনশিয়াল! নির্ধারিত ১০টি অ্যাকাউন্টের একটি ব্যবহার করুন।
+            </div>
+
+            <button type="submit" id="auth-submit-btn" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black py-3 rounded-xl text-xs transition cursor-pointer shadow-lg shadow-emerald-500/10">ড্যাশবোর্ড আনলক করুন 🔓</button>
+        </form>
+
+        <div class="text-center mt-6 pt-4 border-t border-slate-900 text-xs text-slate-400">
+            <span id="toggle-text">নতুন অ্যাকাউন্ট তৈরি করতে চান?</span> 
+            <a href="#" onclick="toggleAuthMode()" id="toggle-link" class="text-emerald-400 font-bold ml-1 hover:underline">Sign Up</a>
+        </div>
+    </div>
+
+
+    <div id="main-dashboard" class="hidden w-full max-w-7xl flex flex-col min-h-screen fade-in">
+        
+        <header class="border-b border-slate-800/50 bg-[#070a13]/70 backdrop-blur-xl rounded-2xl px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+            <div class="flex items-center space-x-4">
+                <div class="p-3 bg-emerald-500/10 rounded-2xl border border-emerald-500/20">
+                    <i class="fa-solid fa-square-nfi text-emerald-400 text-2xl animate-pulse"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-black font-orbitron tracking-wider text-emerald-400 neon-text-green">NEXUS-JHIKARGACHA</h1>
+                    <p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Autonomous Centralized Ecosystem v7.0</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-wrap items-center gap-4 text-xs">
+                <div class="bg-slate-900/80 border border-slate-800/80 px-4 py-2 rounded-xl flex items-center space-x-2">
+                    <i class="fa-solid fa-circle-user text-emerald-400"></i>
+                    <span id="active-user-display" class="text-slate-200 font-bold">ইউজার</span>
+                </div>
+                <div class="bg-slate-900/80 border border-slate-800/80 px-4 py-2 rounded-xl flex items-center space-x-2">
+                    <i class="fa-solid fa-bolt text-amber-400"></i>
+                    <span class="font-orbitron font-bold text-amber-400" id="nav-credits">5,840 JDC</span>
+                </div>
+                <div class="bg-slate-900/80 border border-slate-800/80 px-4 py-2 rounded-xl flex items-center space-x-2 text-slate-300" id="live-clock">
+                    <i class="fa-regular fa-clock text-emerald-400"></i> লোড হচ্ছে...
+                </div>
+                <button onclick="logoutEngine()" class="bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500 hover:text-slate-950 px-3 py-2 rounded-xl font-bold transition cursor-pointer"><i class="fa-solid fa-power-off"></i></button>
+            </div>
+        </header>
+
+        <div class="bg-slate-900/30 p-1.5 rounded-2xl border border-slate-800/40 flex flex-wrap gap-2 mb-6">
+            <button onclick="switchTab('dashboard')" id="tab-dashboard" class="active-tab px-5 py-3 text-xs font-medium rounded-xl transition-all cursor-pointer flex items-center space-x-2">
+                <i class="fa-solid fa-compass"></i> <span>কমান্ড সেন্টার (হোম)</span>
+            </button>
+            <button onclick="switchTab('archive')" id="tab-archive" class="px-5 py-3 text-xs font-medium rounded-xl text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 transition-all cursor-pointer flex items-center space-x-2">
+                <i class="fa-solid fa-landmark-dome"></i> <span>ঝিকরগাছা মেগা আর্কাইভ</span>
+            </button>
+            <button onclick="switchTab('market')" id="tab-market" class="px-5 py-3 text-xs font-medium rounded-xl text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 transition-all cursor-pointer flex items-center space-x-2">
+                <i class="fa-solid fa-layer-group"></i> <span>স্মার্ট বাজার ও দ্রব্যমূল্য 🔎</span>
+            </button>
+            <button onclick="switchTab('jobs')" id="tab-jobs" class="px-5 py-3 text-xs font-medium rounded-xl text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 transition-all cursor-pointer flex items-center space-x-2">
+                <i class="fa-solid fa-briefcase"></i> <span>বেকারত্ব-মুক্ত কর্মসংস্থান</span>
+                <span class="bg-emerald-500/20 text-emerald-400 text-[9px] px-1.5 py-0.5 rounded-md font-bold" id="job-counter">৩টি খালি পদ</span>
+            </button>
+        </div>
+
+        <main class="flex-1">
+            
+            <div id="view-dashboard" class="space-y-6">
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass-panel p-5 rounded-2xl border-emerald-500/10">
+                        <h3 class="text-sm font-bold text-emerald-400 mb-3 flex items-center gap-2"><i class="fa-solid fa-building-shield"></i> গুরুত্বপূর্ণ সরকারি পোর্টাল</h3>
+                        <div class="space-y-2">
+                            <a href="https://bangladesh.gov.bd" target="_blank" class="flex justify-between items-center bg-slate-950/60 p-3 rounded-xl border border-slate-900 hover:border-emerald-500/30 text-xs transition">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-flag text-red-500"></i> জাতীয় তথ্য বাতায়ন</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-500"></i>
+                            </a>
+                            <a href="https://services.nidw.gov.bd" target="_blank" class="flex justify-between items-center bg-slate-950/60 p-3 rounded-xl border border-slate-900 hover:border-emerald-500/30 text-xs transition">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-id-card text-blue-400"></i> NID অনলাইন সেবা</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-500"></i>
+                            </a>
+                            <a href="https://www.eprocure.gov.bd" target="_blank" class="flex justify-between items-center bg-slate-950/60 p-3 rounded-xl border border-slate-900 hover:border-emerald-500/30 text-xs transition">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-file-contract text-amber-400"></i> সরকারি ই-জিপি (e-GP) পোর্টাল</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-500"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-5 rounded-2xl border-blue-500/10">
+                        <h3 class="text-sm font-bold text-blue-400 mb-3 flex items-center gap-2"><i class="fa-solid fa-cloud-sun-rain"></i> লাইভ আবহাওয়া ও স্যাটেলাইট রাডার</h3>
+                        <div class="space-y-2">
+                            <a href="https://www.windy.com" target="_blank" class="flex justify-between items-center bg-slate-950/60 p-3 rounded-xl border border-slate-900 hover:border-blue-500/30 text-xs transition">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-wind text-cyan-400"></i> Windy লাইভ উইন্ড রাডার ম্যাট্রিক্স</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-500"></i>
+                            </a>
+                            <a href="https://bmd.gov.bd" target="_blank" class="flex justify-between items-center bg-slate-950/60 p-3 rounded-xl border border-slate-900 hover:border-blue-500/30 text-xs transition">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-cloud-bolt text-indigo-400"></i> বাংলাদেশ আবহাওয়া অধিদপ্তর</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-500"></i>
+                            </a>
+                            <a href="https://www.iqair.com" target="_blank" class="flex justify-between items-center bg-slate-950/60 p-3 rounded-xl border border-slate-900 hover:border-blue-500/30 text-xs transition">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-smog text-amber-500"></i> IQAir গ্লোবাল বায়ু মান সূচক</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-500"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-5 rounded-2xl border-amber-500/10">
+                        <h3 class="text-sm font-bold text-amber-400 mb-3 flex items-center gap-2"><i class="fa-solid fa-earth-asia"></i> জিও-লোকেশন ও ইউনিক ম্যাপিং টুলস</h3>
+                        <div class="space-y-2">
+                            <a href="https://www.google.com/maps/place/Jhikargacha" target="_blank" class="flex justify-between items-center bg-slate-950/60 p-3 rounded-xl border border-slate-900 hover:border-amber-500/30 text-xs transition">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-map-location-dot text-emerald-400"></i> গুগল ম্যাপস (ঝিকরগাছা কোর্ডস)</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-500"></i>
+                            </a>
+                            <a href="https://earth.google.com" target="_blank" class="flex justify-between items-center bg-slate-950/60 p-3 rounded-xl border border-slate-900 hover:border-amber-500/30 text-xs transition">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-globe text-blue-500"></i> গুগল আর্থ 3D স্যাটেলাইট ভিউ</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-500"></i>
+                            </a>
+                            <a href="https://www.flightradar24.com" target="_blank" class="flex justify-between items-center bg-slate-950/60 p-3 rounded-xl border border-slate-900 hover:border-amber-500/30 text-xs transition">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-plane-departure text-purple-400"></i> FlightRadar24 লাইভ এয়ারস্পেস ট্র্যাকিং</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-500"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass-panel border-red-500/10 p-5 rounded-2xl flex flex-col justify-between">
+                        <div>
+                            <span class="text-[9px] font-bold text-red-400 tracking-widest uppercase"><i class="fa-solid fa-tower-broadcast animate-pulse"></i> Automated SOS Mesh</span>
+                            <h3 class="text-md font-bold mt-1 mb-2">মহল্লা ইমার্জেন্সি নেটওয়ার্ক</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed">১-ক্লিক ব্রডকাস্টে ঝিকরগাছা জোন এবং গদখালীর ভলান্টিয়ার নেটওয়ার্কে হাই-ফ্রিকোয়েন্সি অ্যালার্ট সাইরেন বেজে উঠবে।</p>
+                        </div>
+                        <button onclick="alert('🚨 SOS নেটওয়ার্ক সক্রিয়! ঝিকরগাছা কমান্ড সেন্টারে সিগন্যাল পাঠানো হয়েছে।')" class="w-full mt-4 bg-red-500/10 hover:bg-red-500 text-red-400 hover:text-slate-950 border border-red-500/20 font-bold py-2 rounded-xl text-xs transition cursor-pointer">জরুরি ব্রডকাস্ট চালু করুন</button>
+                    </div>
+                    <div class="glass-panel border-blue-500/10 p-5 rounded-2xl flex flex-col justify-between">
+                        <div>
+                            <span class="text-[9px] font-bold text-blue-400 tracking-widest uppercase"><i class="fa-solid fa-robot"></i> IoT Bin Telemetry</span>
+                            <h3 class="text-md font-bold mt-1 mb-3">রোবোটিক বিন ও বর্জ্য ট্র্যাকিং</h3>
+                            <div class="space-y-2 text-xs">
+                                <div>
+                                    <div class="flex justify-between text-[11px] mb-1"><span class="text-slate-400">বিন ০১ (ঝিকরগাছা বাজার আড়ত)</span><span class="text-emerald-400 font-bold">৪২%</span></div>
+                                    <div class="w-full bg-slate-900 h-1.5 rounded-full"><div class="bg-emerald-400 h-1.5 rounded-full" style="width: 42%"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[11px] mb-1"><span class="text-slate-400">বিন ০২ (গদখালী ফুলের মোড়)</span><span class="text-red-400 font-bold">৮৬% (ফুল)</span></div>
+                                    <div class="w-full bg-slate-900 h-1.5 rounded-full"><div class="bg-red-400 h-1.5 rounded-full" style="width: 86%"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-slate-500 italic mt-2"><i class="fa-solid fa-microchip"></i> হার্ডвых্যার নোড: অনলাইন</p>
+                    </div>
+                    <div class="glass-panel border-emerald-500/10 p-5 rounded-2xl flex flex-col justify-between">
+                        <div>
+                            <span class="text-[9px] font-bold text-emerald-400 tracking-widest uppercase"><i class="fa-solid fa-seedling"></i> Prediction Engine</span>
+                            <h3 class="text-md font-bold mt-1 mb-1">এআই গদখালী এগ্রি-শিল্ড</h3>
+                            <p class="text-xs text-emerald-400/90 font-medium">ঝিকরগাছা জোন কনটেক্সট: সক্রিয় এবং অনলাইন</p>
+                            <p class="text-[11px] text-slate-400 mt-2 leading-relaxed italic">"AI পূর্বাভাস: আগামী ৪৮ ঘণ্টায় শিলাবৃষ্টির মেঘ জমা হতে পারে। পানিসরা ও গদখালীর ফুল চাষিরা টিউলিপ ও জারবেরা শেড ক্লোজ রাখুন।"</p>
+                        </div>
+                        <div class="w-full bg-emerald-950/40 border border-emerald-500/20 py-1.5 rounded-xl text-center text-[10px] text-emerald-400 font-bold mt-3">স্যাটেলাইট ডাটা সিঙ্কড</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div><span class="text-[9px] text-emerald-400 font-black uppercase tracking-wider">Web3 Reward Node</span><h3 class="text-lg font-bold mt-0.5">ইকো-রিওয়ার্ড গ্রিড</h3></div>
+                                <i class="fa-solid fa-leaf text-emerald-400 text-lg"></i>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 mb-4 text-xs">
+                                <div class="bg-slate-950 p-3 rounded-xl border border-slate-900"><p class="text-slate-400">রিসাইকেলড বর্জ্য</p><p class="text-base font-bold text-slate-200 mt-0.5">241.8 Kg</p></div>
+                                <div class="bg-slate-950 p-3 rounded-xl border border-slate-900"><p class="text-slate-400">টোকেন ব্যালেন্স</p><p class="text-base font-bold text-amber-400 mt-0.5" id="eco-credits">2410 JDC</p></div>
+                            </div>
+                            <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-900 text-xs mb-4">
+                                <label class="text-slate-400 block mb-1.5">স্মার্ট বিন ফিড ইনপুট:</label>
+                                <select id="waste-select" class="w-full bg-slate-900 border border-slate-800 p-2.5 rounded-lg text-slate-200 focus:outline-none">
+                                    <option value="10">প্লাস্টিক বোতল ও ক্যান (+10 JDC)</option>
+                                    <option value="50">পরিত্যক্ত ইলেকট্রনিক সামগ্রী (+50 JDC)</option>
+                                    <option value="15">বাজারের পচা সবজি ও জৈব ময়লা (+15 JDC)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button onclick="addEcoTokens()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold py-3 rounded-xl text-xs transition cursor-pointer">স্মার্ট বিন কিউআর স্ক্যান</button>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div><span class="text-[9px] text-blue-400 font-black uppercase tracking-wider">Cognitive Matrix</span><h3 class="text-lg font-bold mt-0.5">নিও-লার্ন হাব</h3></div>
+                                <i class="fa-solid fa-brain text-blue-400 text-lg"></i>
+                            </div>
+                            <div class="flex gap-1.5 mb-3">
+                                <button id="m-comic" onclick="changeLMode('comic')" class="flex-1 bg-blue-500/20 border border-blue-500/40 text-blue-400 p-2 rounded-lg text-[10px] font-bold cursor-pointer">কমিক মোড</button>
+                                <button id="m-scifi" onclick="changeLMode('scifi')" class="flex-1 bg-slate-950 text-slate-400 p-2 rounded-lg text-[10px] font-bold cursor-pointer">সাই-ফাই মোড</button>
+                            </div>
+                            <div id="learn-output" class="bg-slate-950 border border-slate-900 p-3 rounded-xl text-xs h-[100px] overflow-y-auto text-slate-300 leading-relaxed italic">কোনো জটিল বৈজ্ঞানিক তত্ত্ব বা থিওরি নিচে টাইপ করুন...</div>
+                        </div>
+                        <div class="mt-4 flex gap-2">
+                            <input id="learn-input" type="text" placeholder="যেমন: কোয়ান্টাম ফিজিক্স..." class="flex-1 bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-xs focus:outline-none">
+                            <button onclick="runAiLearn()" class="bg-blue-500 hover:bg-blue-600 px-4 rounded-xl text-xs font-bold cursor-pointer"><i class="fa-solid fa-paper-plane text-slate-950"></i></button>
+                        </div>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div><span class="text-[9px] text-red-400 font-black uppercase tracking-wider">Secure Ledger</span><h3 class="text-lg font-bold mt-0.5">ভয়েস অফ জাস্টিস</h3></div>
+                                <i class="fa-solid fa-scale-balanced text-red-400 text-lg"></i>
+                            </div>
+                            <textarea id="justice-input" rows="2" placeholder="দুর্নীতি, প্রশাসনিক অবহেলা বা সামাজিক অপরাধের সঠিক বিবরণ দিন (আপনার পরিচয় সম্পূর্ণ গোপন থাকবে)..." class="w-full bg-slate-950 border border-slate-800 p-3 rounded-xl text-xs text-slate-200 focus:outline-none resize-none mb-3"></textarea>
+                            <div id="justice-output" class="hidden bg-red-500/5 border border-red-500/20 p-2.5 rounded-xl text-[10px] text-slate-400 leading-relaxed"></div>
+                        </div>
+                        <button onclick="runAiJustice()" class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 rounded-xl text-xs transition cursor-pointer">AI জাস্টিস ব্রডকাস্ট</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-archive" class="hidden space-y-6">
+                <div class="glass-panel rounded-2xl p-6">
+                    <h2 class="text-2xl font-bold text-emerald-400 border-b border-slate-800 pb-3 mb-6 flex items-center gap-2"><i class="fa-solid fa-bookmark"></i> ঝিকরগাছা উপজেলা: সমৃদ্ধ ইতিহাস ও অর্থনৈতিক চালচিত্র</h2>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 text-xs">
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-900"><p class="text-slate-400">প্রশাসনিক এরিয়া</p><p class="text-sm font-bold text-slate-200 mt-0.5">১১টি ইউনিয়ন, ১টি পৌরসভা</p></div>
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-900"><p class="text-slate-400">অর্থনৈতিক হিলিয়াম</p><p class="text-sm font-bold text-emerald-400 mt-0.5">৩০০ কোটি টাকার ফ্লাওয়ার মার্কেট</p></div>
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-900"><p class="text-slate-400">প্রধান নদী লাইন</p><p class="text-sm font-bold text-slate-200 mt-0.5">ঐতিহাসিক কপোতাক্ষ নদ</p></div>
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-900"><p class="text-slate-400">ঐতিহ্যবাহী শিক্ষাপীঠ</p><p class="text-sm font-bold text-blue-400 mt-0.5">ঝিকরগাছা বিএম হাই স্কুল</p></div>
+                    </div>
+
+                    <div class="space-y-6 text-xs leading-relaxed text-slate-300">
+                        <div class="border-l-2 border-emerald-500 pl-4">
+                            <h3 class="text-base font-bold text-slate-100 mb-1">🌷 গদখালী ও পানিসরা ফ্লাওয়ার বেল্ট</h3>
+                            <p>ঝিকরগাছা উপজেলার গদখালী ও পানিসরা ইউনিয়নকে যৌথভাবে বাংলাদেশের **"ফুলের রাজধানী"** বলা হয়। দেশের প্রায় ৭৫% ফুলের চাহিদা এখান থেকে পূরণ করা হয়। বর্তমানে সেখানে আধুনিক প্লাস্টিক শেড নেট ও টিউলিপ প্রসেসিং প্ল্যান্ট ব্যবহার করে ফুল চাষকে একটি গ্লোবাল ইন্ডাস্ট্রিতে রূপ দেওয়া হচ্ছে।</p>
+                        </div>
+                        <div class="border-l-2 border-blue-500 pl-4">
+                            <h3 class="text-base font-bold text-slate-100 mb-1">🌊 কপোতাক্ষ নদের অর্থনৈতিক ও ভৌগোলিক গুরুত্ব</h3>
+                            <p>মহাকবি মাইকেল মধুসূদন দত্তের স্মৃতিবিজড়িত কপোতাক্ষ নদ ঝিকরগাছার বুক চিরে প্রবাহিত হয়েছে। এই নদের দুই পাড়ের অববাহিকায় উৎপাদিত কৃষি পণ্য সামগ্রী এই অঞ্চলের অর্থনীতির মূল চালিকাশক্তি। ব্রিটিশ আমলে তৈরি কপোতাক্ষ ব্রীজ eastbound পরিবহনের অন্যতম ঐতিহাসিক নিদর্শন।</p>
+                        </div>
+                        <div class="border-l-2 border-amber-500 pl-4 bg-amber-500/5 p-4 rounded-r-xl border-y border-r border-amber-500/10">
+                            <h3 class="text-base font-bold text-amber-400 mb-1"><i class="fa-solid fa-building-columns"></i> ঝিকরগাছা কেন্দ্রীয় ডিজিটাল লাইব্রেরি প্রজেক্ট</h3>
+                            <p>ঝিকরগাছার তরুণ ও শিক্ষার্থী সমাজের উদ্যোগে এবং স্থানীয় administrations এর ১ লক্ষ টাকা সরকারি বাজেট বরাদ্দের মাধ্যমে উপজেলা সদরে একটি **অত্যাধুনিক কেন্দ্রীয় ডিজিটাল লাইব্রেরি** প্রতিষ্ঠার কাজ চলছে। এটি ঝিকরগাছার প্রতিটি শিক্ষার্থীকে বিনামূল্যে উন্নত বিজ্ঞান, কোডিং এবং রোবোটিক্সের ই-বুক ও গ্লোবাল জার্নাল পড়ার সুযোগ করে দেবে।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-market" class="hidden space-y-6">
+                <div class="glass-panel rounded-2xl p-6">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-800 pb-4 mb-6">
+                        <div>
+                            <h2 class="text-xl font-bold text-amber-400 flex items-center gap-2"><i class="fa-solid fa-calculator"></i> সিন্ডিকেট-মুক্ত লাইভ বাজার ম্যাট্রিক্স</h2>
+                            <p class="text-xs text-slate-400 mt-0.5">ঝিকরগাছা সদর বাজার ও গদখালী আড়তের দামের সরাসরি সমন্বিত তালিকা।</p>
+                        </div>
+                        <div class="relative w-full md:w-80">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-xs"></i>
+                            <input type="text" id="market-search" onkeyup="filterMarketEngine()" placeholder="পণ্য বা নির্দিষ্ট ফুলের নাম টাইপ করুন... 🔎" class="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 pl-10 pr-4 text-xs focus:outline-none focus:border-amber-500 text-slate-100 transition-all">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-slate-950/40 p-4 rounded-xl border border-slate-900">
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 border-l-2 border-blue-500 pl-2">নিত্যপ্রয়োজনীয় কাঁচাবাজার ও খাদ্যসামগ্রী</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left text-xs">
+                                    <thead class="bg-slate-900/60 text-slate-400 border-b border-slate-800">
+                                        <tr><th class="p-3">পণ্যের বিবরণ</th><th class="p-3">ইউনিট</th><th class="p-3">আড়ত দর</th><th class="p-3 text-right">খুচরা বাজার দর</th></tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-900 text-slate-300">
+                                        <tr class="item-row"><td class="p-3 font-semibold item-name">মিনিকেট চাল (লোকাল প্রিমিয়াম)</td><td class="p-3">১ কেজি</td><td class="p-3 text-emerald-400">৳৬৪</td><td class="p-3 text-right font-bold text-slate-100">৳৬৬</td></tr>
+                                        <tr class="item-row"><td class="p-3 font-semibold item-name">দেশি পেঁয়াজ (ঝিকরগাছা রূপান্তর)</td><td class="p-3">১ কেজি</td><td class="p-3 text-emerald-400">৳৫৫</td><td class="p-3 text-right font-bold text-slate-100">৳৫৮</td></tr>
+                                        <tr class="item-row"><td class="p-3 font-semibold item-name">তাঁজা রুই মাছ (কপোতাক্ষ নদ)</td><td class="p-3">১ কেজি</td><td class="p-3 text-emerald-400">৳৩২০</td><td class="p-3 text-right font-bold text-slate-100">৳৩৪০</td></tr>
+                                        <tr class="item-row"><td class="p-3 font-semibold item-name">সোনাভোগ আলু (নতুন)</td><td class="p-3">১ কেজি</td><td class="p-3 text-emerald-400">৳৩৫</td><td class="p-3 text-right font-bold text-slate-100">৳৩৮</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="bg-slate-950/40 p-4 rounded-xl border border-slate-900">
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 border-l-2 border-emerald-500 pl-2">গদখালী পাইকারি ফুলের বাজার ডায়েরি</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left text-xs">
+                                    <thead class="bg-slate-900/60 text-slate-400 border-b border-slate-800">
+                                        <tr><th class="p-3">ফুলের ধরণ</th><th class="p-3">পরিমাণ</th><th class="p-3">পাইকারি দাম</th><th class="p-3 text-right">বাজার চাহিদা</th></tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-900 text-slate-300">
+                                        <tr class="item-row"><td class="p-3 font-semibold text-pink-400 item-name">লাল গোলাপ (দেশি)</td><td class="p-3">১০০ পিস</td><td class="p-3 text-amber-400">৳৩৫০ - ৳৪০০</td><td class="p-3 text-right text-emerald-400 font-bold">তুঙ্গে</td></tr>
+                                        <tr class="item-row"><td class="p-3 font-semibold text-slate-300 item-name">রজনীগন্ধা স্টিক (সিঙ্গেল)</td><td class="p-3">১০০ স্টিক</td><td class="p-3 text-amber-400">৳২৫০ - ৳ ৩০০</td><td class="p-3 text-right text-slate-400">স্বাভাবিক</td></tr>
+                                        <tr class="item-row"><td class="p-3 font-semibold text-yellow-400 item-name">গ্ল্যাডিওলাস (হাইбриড রঙিন)</td><td class="p-3">১ পিস</td><td class="p-3 text-amber-400">৳৬ - ৳৮</td><td class="p-3 text-right text-emerald-400 font-bold">উচ্চ চাহিদা</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-jobs" class="hidden space-y-6">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="glass-panel rounded-2xl p-6 h-fit border-emerald-500/10">
+                        <h3 class="text-md font-bold text-emerald-400 mb-1"><i class="fa-solid fa-circle-plus"></i> শূন্যপদের বিজ্ঞপ্তি পোস্ট করুন</h3>
+                        <p class="text-[11px] text-slate-400 mb-4">ঝিকরগাছার আইটি ফার্ম, স্কুল, ফুলের আড়ত, বা শপ মালিকরা এখানে ফ্রিতে বিজ্ঞপ্তি দিতে পারবেন।</p>
+                        
+                        <div class="space-y-3.5 text-xs">
+                            <div>
+                                <label class="text-slate-400 block mb-1">প্রতিষ্ঠান বা কোম্পানির নাম</label>
+                                <input id="job-company" type="text" placeholder="যেমন: কেএনওয়েব আইটি সリューション" class="w-full bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-slate-200 focus:outline-none focus:border-emerald-500">
+                            </div>
+                            <div>
+                                <label class="text-slate-400 block mb-1">খালি পদের নাম (Job Title)</label>
+                                <input id="job-title" type="text" placeholder="যেমন: ফ্রন্ট-এন্ড ডেভলপার" class="w-full bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-slate-200 focus:outline-none focus:border-emerald-500">
+                            </div>
+                            <div>
+                                <label class="text-slate-400 block mb-1">কাজের ধরণ (Category)</label>
+                                <select id="job-category" class="w-full bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-slate-200 focus:outline-none">
+                                    <option value="IT / টেকনোলজি">IT / টেকনোলজি</option>
+                                    <option value="কৃষি ও ফুল চাষ শিল্প">কৃষি ও ফুল চাষ শিল্প</option>
+                                    <option value="শিক্ষা ও টিউশনি">শিক্ষা ও টিউশনি</option>
+                                </select>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div>
+                                    <label class="text-slate-400 block mb-1">মাসিক সম্মানী/বেতন</label>
+                                    <input id="job-salary" type="text" placeholder="৳১৫,০০০" class="w-full bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-slate-200 focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="text-slate-400 block mb-1">কাজের এরিয়া</label>
+                                    <input id="job-loc" type="text" placeholder="উদা: বিএম হাই স্কুল রোড" class="w-full bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-slate-200 focus:outline-none">
+                                </div>
+                            </div>
+                            <button onclick="publishJobEngine()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black py-3 rounded-xl text-xs transition cursor-pointer">লাইভ পোর্টালে যুক্ত করুন 🚀</button>
+                        </div>
+                    </div>
+
+                    <div class="lg:grid lg:col-span-2 space-y-4">
+                        <div class="flex justify-between items-center bg-slate-900/30 p-3 rounded-xl border border-slate-800/50">
+                            <h3 class="text-sm font-bold flex items-center gap-2"><i class="fa-solid fa-briefcase text-blue-400"></i> একটিভ ভ্যাকেন্সি স্ট্রিম</h3>
+                            <span class="text-[10px] text-slate-400 italic">ঝিকরগাছা লাইভ ডাটাবেজ</span>
+                        </div>
+
+                        <div id="job-board-deck" class="space-y-3">
+                            <div class="glass-panel p-4 rounded-xl flex justify-between items-start">
+                                <div>
+                                    <span class="bg-blue-500/10 text-blue-400 text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider">IT / টেকনোলজি</span>
+                                    <h4 class="text-md font-bold text-slate-100 mt-1">জুনিয়র ফ্রন্ট-এন্ড কোডার (HTML/Tailwind)</h4>
+                                    <p class="text-xs text-emerald-400 font-semibold">কেএনওয়েব (KNWeb) ডিজিটাল সলিউশনস</p>
+                                    <div class="flex gap-4 text-[10px] text-slate-400 mt-2">
+                                        <span><i class="fa-solid fa-map-pin"></i> বিএম হাই স্কুল রোড, ঝিকরগাছা</span>
+                                        <span><i class="fa-solid fa-money-check-dollar"></i> ৳১২,০০০ - ৳১৫,০০০</span>
+                                    </div>
+                                </div>
+                                <button onclick="alert('আবেদন সফল হয়েছে!')" class="bg-blue-500 hover:bg-blue-600 text-slate-950 text-xs font-bold px-4 py-2 rounded-xl transition cursor-pointer">আবেদন</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="border-t border-slate-900 bg-[#030712] text-center py-4 text-[11px] text-slate-500 font-orbitron tracking-wide mt-6">
+            &copy; 2026 NEXUS-JHIKARGACHA NETWORK. BACKED BY KNWEB LABS.
+        </footer>
+    </div>
+
+
+    <script>
+        // ১০টি প্রিসেট সিকিউর ইউজারনেম এবং পাসওয়ার্ড ব্যাংক
+        const reservedDatabase = {
+            'kazim': 'nahian2026',
+            'knweb': 'studio77',
+            'admin_jhika': 'nexus99',
+            'developer': 'htmlcssai',
+            'robotics_core': 'iotmesh',
+            'guest_user': 'welcome00',
+            'bm_school': 'student10',
+            'godkhali_hub': 'flower300',
+            'library_project': 'bookbudget1',
+            'cto_knweb': 'alphasecure'
+        };
+
+        let isLoginMode = true;
+        let creditBalance = 5840;
+        let learnMode = 'comic';
+        let baseJobCount = 3;
+
+        // Live Clock Manager
+        function updateSystemClock() {
+            const timeContainer = document.getElementById('live-clock');
+            if(!timeContainer) return;
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            const dateString = now.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+            timeContainer.innerHTML = `<i class="fa-regular fa-clock text-emerald-400 mr-1"></i> ${dateString} | ${timeString}`;
+        }
+        setInterval(updateSystemClock, 1000);
+
+        // Toggle Auth Signin vs Signup Mode
+        function toggleAuthMode() {
+            const subtitle = document.getElementById('auth-subtitle');
+            const submitBtn = document.getElementById('auth-submit-btn');
+            const toggleText = document.getElementById('toggle-text');
+            const toggleLink = document.getElementById('toggle-link');
+            document.getElementById('auth-error').classList.add('hidden');
+
+            if (isLoginMode) {
+                subtitle.innerText = "সিস্টেম ডাটাবেজে নতুন আইডি রেজিস্টার করুন";
+                submitBtn.innerText = "সাইন-আপ সম্পন্ন করুন 🚀";
+                toggleText.innerText = "ইতিমধ্যে অ্যাকাউন্ট আছে?";
+                toggleLink.innerText = "Sign In";
+                isLoginMode = false;
+            } else {
+                subtitle.innerText = "ঝিকরগাছা স্মার্ট ড্যাশবোর্ডে প্রবেশ করতে লগইন করুন";
+                submitBtn.innerText = "ড্যাশবোর্ড আনলক করুন 🔓";
+                toggleText.innerText = "নতুন অ্যাকাউন্ট তৈরি করতে চান?";
+                toggleLink.innerText = "Sign Up";
+                isLoginMode = true;
+            }
+        }
+
+        // Authentication Engine Core
+        function handleAuthEngine(event) {
+            event.preventDefault();
+            const usernameInput = document.getElementById('auth-user').value.trim().toLowerCase();
+            const passwordInput = document.getElementById('auth-pass').value;
+            const errorAlert = document.getElementById('auth-error');
+
+            if (!isLoginMode) {
+                alert("এটি একটি সিকিউর সিস্টেম লোকাল ডেমো। দয়া করে সংরক্ষিত ১০টি আইডির যেকোনো একটি ব্যবহার করে সরাসরি লগইন (Sign In) করুন!");
+                toggleAuthMode();
+                return;
+            }
+
+            // ১০ জোড়া ক্রেডেনশিয়াল ম্যাচিং চেক
+            if (reservedDatabase[usernameInput] && reservedDatabase[usernameInput] === passwordInput) {
+                errorAlert.classList.add('hidden');
+                
+                const authScreen = document.getElementById('auth-screen');
+                const mainDashboard = document.getElementById('main-dashboard');
+                
+                authScreen.style.opacity = '0';
+                authScreen.style.transform = 'translateY(-10px)';
+                
+                setTimeout(() => {
+                    authScreen.style.display = 'none';
+                    document.body.classList.remove('justify-center', 'items-center');
+                    mainDashboard.classList.remove('hidden');
+                    document.getElementById('active-user-display').innerText = usernameInput.toUpperCase();
+                    updateSystemClock();
+                }, 400);
+            } else {
+                errorAlert.classList.remove('hidden');
+            }
+        }
+
+        function logoutEngine() {
+            location.reload();
+        }
+
+        function switchTab(viewId) {
+            ['dashboard', 'archive', 'market', 'jobs'].forEach(tab => {
+                document.getElementById('view-' + tab).classList.add('hidden');
+                document.getElementById('tab-' + tab).classList.remove('active-tab');
+                document.getElementById('tab-' + tab).classList.add('text-slate-400');
+            });
+            document.getElementById('view-' + viewId).classList.remove('hidden');
+            document.getElementById('tab-' + viewId).classList.add('active-tab');
+        }
+
+        function filterMarketEngine() {
+            let searchInput = document.getElementById('market-search').value.toLowerCase();
+            let tableRows = document.getElementsByClassName('item-row');
+            for (let i = 0; i < tableRows.length; i++) {
+                let textData = tableRows[i].getElementsByClassName('item-name')[0].innerText.toLowerCase();
+                tableRows[i].style.display = textData.includes(searchInput) ? "" : "none";
+            }
+        }
+
+        function publishJobEngine() {
+            const company = document.getElementById('job-company').value;
+            const title = document.getElementById('job-title').value;
+            const cat = document.getElementById('job-category').value;
+            const salary = document.getElementById('job-salary').value;
+            const location = document.getElementById('job-loc').value;
+
+            if(!company || !title || !salary || !location) {
+                alert("অনুগ্রহ করে ফর্মের সমস্ত তথ্য সঠিকভাবে পূরণ করুন!");
+                return;
+            }
+
+            const deck = document.getElementById('job-board-deck');
+            const jobCard = document.createElement('div');
+            jobCard.className = "glass-panel p-4 rounded-xl flex justify-between items-start border border-emerald-500/20 shadow-xl";
+            
+            jobCard.innerHTML = `
+                <div>
+                    <span class="bg-emerald-500/10 text-emerald-400 text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider">${cat}</span>
+                    <h4 class="text-md font-bold text-slate-100 mt-1">${title}</h4>
+                    <p class="text-xs text-emerald-400 font-semibold">${company}</p>
+                    <div class="flex gap-4 text-[10px] text-slate-400 mt-2">
+                        <span><i class="fa-solid fa-map-pin"></i> ${location}</span>
+                        <span><i class="fa-solid fa-money-check-dollar"></i> ${salary}</span>
+                    </div>
+                </div>
+                <button onclick="alert('আবেদন সফল!')" class="bg-blue-500 hover:bg-blue-600 text-slate-950 text-xs font-bold px-4 py-2 rounded-xl transition cursor-pointer">আবেদন</button>
+            `;
+            
+            deck.prepend(jobCard);
+            baseJobCount++;
+            document.getElementById('job-counter').innerText = `${baseJobCount}টি খালি পদ`;
+
+            document.getElementById('job-company').value = '';
+            document.getElementById('job-title').value = '';
+            document.getElementById('job-salary').value = '';
+            document.getElementById('job-loc').value = '';
+
+            alert("বিজ্ঞপ্তিটি যুক্ত করা হয়েছে!");
+        }
+
+        function addEcoTokens() {
+            let val = parseInt(document.getElementById('waste-select').value);
+            creditBalance += val;
+            document.getElementById('nav-credits').innerText = creditBalance.toLocaleString() + " JDC";
+            alert(`সফলভাবে +${val} JDC ক্রেডিট যুক্ত করা হয়েছে।`);
+        }
+
+        function changeLMode(m) {
+            learnMode = m;
+            document.getElementById('m-comic').className = m === 'comic' ? 'flex-1 bg-blue-500/20 border border-blue-500/40 text-blue-400 p-2 rounded-lg text-[10px] font-bold cursor-pointer' : 'flex-1 bg-slate-950 text-slate-400 p-2 rounded-lg text-[10px] font-bold cursor-pointer';
+            document.getElementById('m-scifi').className = m === 'scifi' ? 'flex-1 bg-blue-500/20 border border-blue-500/40 text-blue-400 p-2 rounded-lg text-[10px] font-bold cursor-pointer' : 'flex-1 bg-slate-950 text-slate-400 p-2 rounded-lg text-[10px] font-bold cursor-pointer';
+        }
+
+        function runAiLearn() {
+            let input = document.getElementById('learn-input').value;
+            let output = document.getElementById('learn-output');
+            if(!input) return alert("টপিক লিখুন!");
+            output.innerText = "কম্পিউটিং এআই ম্যাট্রিক্স...";
+            setTimeout(() => {
+                if(learnMode === 'comic') {
+                    output.innerHTML = `<strong>💥 [কমিক মুড] ${input}:</strong> আমাদের সাইবার রোবটটি হঠাৎ কোয়ান্টাম টানেলে পড়ে দেখল সে একই সাথে ঝিকরগাছা বিএম স্কুল ল্যাব ও গদখালী ফুলের মোড়ে স্পন করেছে! এটিই সুপারপজিশন!`;
+                } else {
+                    output.innerHTML = `<strong>🚀 [সাই-ফাই ড্রাফট] ${input}:</strong> কপোতাক্ষ নদের গভীর খনি থেকে উদ্ধার করা হলো ডার্ক-ম্যাটার সেল, যা <strong>${input}</strong> শক্তির সাহায্যে মহাকাশযানকে আলোর গতি দেয়।`;
+                }
+            }, 800);
+        }
+
+        function runAiJustice() {
+            let input = document.getElementById('justice-input').value;
+            let output = document.getElementById('justice-output');
+            if(!input) return alert("অভিযোগ এন্ট্রি করুন!");
+            output.classList.remove('hidden');
+            output.innerHTML = `<strong>🔐 SHA-256 এনক্রিপশন সাকসেস:</strong><br>অভিযোগটি ব্লকচেইন আইডি #JHK-${Math.floor(Math.random()*9000)+1000} আকারে ডাটাবেজে সুরক্ষিতভাবে ব্রডকাস্ট করা হয়েছে।`;
+        }
+    </script>
+</body>
+</html>
