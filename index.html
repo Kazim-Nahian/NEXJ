@@ -70,7 +70,7 @@
                 <i id="auth-icon" class="fa-solid fa-fingerprint text-emerald-400 text-3xl"></i>
             </div>
             <h2 id="auth-title" class="text-xl font-black font-orbitron tracking-wider text-emerald-400 neon-text-green">KNWEB SECURE GATEWAY</h2>
-            <p id="auth-subtitle" class="text-xs text-slate-400 mt-1">ঝিকরগাছা স্মার্ট ড্যাশবোর্ডে প্রবেশ করতে লগইন করুন</p>
+            <p id="auth-subtitle" class="text-xs text-slate-400 mt-1">ঝিকরগাছা ড্যাশবোর্ডে প্রবেশ করতে লগইন করুন</p>
         </div>
 
         <form id="auth-form" onsubmit="handleAuthEngine(event)" class="space-y-4">
@@ -156,6 +156,7 @@
             
             <!-- 1. VIEW PANEL: COMMAND CENTER (HOME) -->
             <div id="view-dashboard" class="space-y-6">
+                <!-- Top Panels Content Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="glass-panel p-5 rounded-2xl border border-emerald-500/10">
                         <h3 class="text-sm font-bold text-emerald-400 mb-3 flex items-center gap-2"><i class="fa-solid fa-building-shield"></i> গুরুত্বপূর্ণ সরকারি পোর্টাল</h3>
@@ -212,6 +213,7 @@
                     </div>
                 </div>
 
+                <!-- Mid Panels Content Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="glass-panel border border-red-500/10 p-5 rounded-2xl flex flex-col justify-between">
                         <div>
@@ -251,6 +253,7 @@
                     </div>
                 </div>
 
+                <!-- Eco and System Control Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between col-span-1">
                         <div>
@@ -308,7 +311,7 @@
                             </div>
                         </div>
                         <div class="mt-4 p-3 bg-emerald-950/20 border border-emerald-500/10 rounded-xl text-center text-[11px] text-slate-400">
-                             সিস্টেম কোর অটোমেশন ব্যাকএন্ড রানিং অন <span class="text-emerald-400 font-bold font-orbitron">MacroDroid REST Gateway v2.4</span>
+                             সিস্টем কোর অটোমেশন ব্যাকএন্ড রানিং অন <span class="text-emerald-400 font-bold font-orbitron">MacroDroid REST Gateway v2.4</span>
                         </div>
                     </div>
                 </div>
@@ -329,21 +332,21 @@
                     <div class="space-y-6 text-xs leading-relaxed text-slate-300">
                         <div class="border-l-2 border-emerald-500 pl-4">
                             <h3 class="text-base font-bold text-slate-100 mb-1">🌷 গদখালী ও পানিসরা ফ্লাওয়ার বেল্ট</h3>
-                            <p>ঝিকরগাছা উপজেলার গদখালী ও পানিসরা ইউনিয়নকে যৌথভাবে বাংলাদেশের **"ফুলের রাজধানী"** বলা হয়। দেশের প্রায় ৭৫% ফুলের চাহিদা এখান থেকে পূরণ করা হয়। বর্তমানে সেখানে আধুনিক প্লাস্টিক শেড নেট ও টিউলিপ প্রসেসিং প্ল্যান্ট ব্যবহার করে ফুল চাষকে একটি গ্লোবাল ইন্ডাস্ট্রিতে রূপ দেওয়া হচ্ছে।</p>
+                            <p>ঝিকরগাছা উপজেলার গদখালী ও পানিসরা ইউনিয়নকে যৌথভাবে বাংলাদেশের **"ফুলের রাজধানী"** বলা হয়। দেশের প্রায় ৭৫% ফুলের চাহিদা এখান থেকে পূরণ করা হয়। বর্তমানে সেখানে আধুনিকプラスチック শেড নেট ও টিউলিপ প্রসেসিং প্ল্যান্ট ব্যবহার করে ফুল চাষকে একটি গ্লোবাল ইন্ডাস্ট্রিতে রূপ দেওয়া হচ্ছে।</p>
                         </div>
                         <div class="border-l-2 border-blue-500 pl-4">
                             <h3 class="text-base font-bold text-slate-100 mb-1">🌊 কপোতাক্ষ নদের অর্থনৈতিক ও ভৌগোলিক গুরুত্ব</h3>
                             <p>মহাকবি মাইকেল মধুসূদন দত্তের স্মৃতিবিজড়িত কপোতাক্ষ নদ ঝিকরগাছার বুক চিরে প্রবাহিত হয়েছে। এই নদের দুই পাড়ের অববাহিকায় উৎপাদিত কৃষি পণ্য সামগ্রী এই অঞ্চলের অর্থনীতির মূল চালিকাশক্তি। ব্রিটিশ আমলে তৈরি কপোতাক্ষ ব্রীজ eastbound পরিবহনের অন্যতম ঐতিহাসিক নিদর্শন।</p>
                         </div>
                         <div class="border-l-2 border-amber-500 pl-4 bg-amber-500/5 p-4 rounded-r-xl border border-amber-500/10">
-                            <h3 class="text-base font-bold text-amber-400 mb-1"><i class="fa-solid fa-building-columns"></i> ঝিকরগাছা केंद्रीय ডিজিটাল লাইব্রেরি প্রজেক্ট</h3>
-                            <p>ঝিকরগাছার তরুণ ও শিক্ষার্থী সমাজের উদ্যোগে এবং স্থানীয় প্রশাসনের ১ লক্ষ টাকা সরকারি বাজেট বরাদ্দের মাধ্যমে উপজেলা সদরে একটি **অत्याধুনিক কেন্দ্রীয় ডিজিটাল লাইব্রেরি** প্রতিষ্ঠার কাজ চলছে। এটি ঝিকরগাছার প্রতিটি শিক্ষার্থীকে বিনামূল্যে উন্নত বিজ্ঞান, কোডিং এবং রোবোটিক্সের ই-বুক ও গ্লোবাল জার্নাল পড়ার সুযোগ করে দেবে।</p>
+                            <h3 class="text-base font-bold text-amber-400 mb-1"><i class="fa-solid fa-building-columns"></i> ঝিকরগাছা কেন্দ্রীয় ডিজিটাল লাইব্রেরি প্রজেক্ট</h3>
+                            <p>ঝিকরগাছার তরুণ ও শিক্ষার্থী সমাজের উদ্যোগে এবং স্থানীয় প্রশাসনের ১ লক্ষ টাকা সরকারি বাজেট বরাদ্দের মাধ্যমে উপজেলা সদরে একটি **অত্যাধুনিক কেন্দ্রীয় ডিজিটাল লাইব্রেরি** প্রতিষ্ঠার কাজ চলছে। এটি ঝিকরগাছার প্রতিটি শিক্ষার্থীকে বিনামূল্যে উন্নত বিজ্ঞান, কোডিং এবং রোবোটিক্সের ই-বুক ও গ্লোবাল জার্নাল পড়ার সুযোগ করে দেবে।</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 3. VIEW PANEL: SMART MARKET MATRIX -->
+            <!-- 3. VIEW PANEL: SMART MARKET MATRIX (DYNAMIC DROPDOWN LIST) -->
             <div id="view-market" class="hidden space-y-6">
                 <div class="glass-panel rounded-2xl p-6">
                     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-800 pb-4 mb-6">
@@ -358,6 +361,7 @@
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Food Table Container -->
                         <div class="bg-slate-950/40 p-4 rounded-xl border border-slate-900">
                             <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 border-l-2 border-blue-500 pl-2">নিত্যপ্রয়োজনীয় কাঁচাবাজার ও খাদ্যসামজ্ঞী</h3>
                             <div class="overflow-x-auto">
@@ -366,15 +370,13 @@
                                         <tr><th class="p-3">পণ্যের বিবরণ</th><th class="p-3">ইউনিট</th><th class="p-3">আড়ত দর</th><th class="p-3 text-right">খুচরা বাজার দর</th></tr>
                                     </thead>
                                     <tbody id="food-market-table" class="divide-y divide-slate-900 text-slate-300">
-                                        <tr class="item-row"><td class="p-3 font-semibold item-name">মিনিকেট চাল (লোকাল প্রিমিয়াম)</td><td class="p-3">১ কেজি</td><td class="p-3 text-emerald-400">৳৬৪</td><td class="p-3 text-right font-bold text-slate-100">৳৬৬</td></tr>
-                                        <tr class="item-row"><td class="p-3 font-semibold item-name">দেশি পেঁয়াজ (ঝিকরগাছা রূপান্তর)</td><td class="p-3">১ কেজি</td><td class="p-3 text-emerald-400">৳৫৫</td><td class="p-3 text-right font-bold text-slate-100">৳৫৮</td></tr>
-                                        <tr class="item-row"><td class="p-3 font-semibold item-name">তাঁজা রুই মাছ (কপোতাক্ষ নদ)</td><td class="p-3">১ কেজি</td><td class="p-3 text-emerald-400">৳৩২০</td><td class="p-3 text-right font-bold text-slate-100">৳৩৪০</td></tr>
-                                        <tr class="item-row"><td class="p-3 font-semibold item-name">সোনাভোগ আলু (নতুন)</td><td class="p-3">১ কেজি</td><td class="p-3 text-emerald-400">৳৩৫</td><td class="p-3 text-right font-bold text-slate-100">৳৩৮</td></tr>
+                                        <!-- Javascript Dynamically Inject Objects here -->
                                     </tbody>
                                 </table>
                             </div>
                         </div>
 
+                        <!-- Flower Table Container -->
                         <div class="bg-slate-950/40 p-4 rounded-xl border border-slate-900">
                             <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 border-l-2 border-emerald-500 pl-2">গদখালী পাইকারি ফুলের বাজার ডায়েরি</h3>
                             <div class="overflow-x-auto">
@@ -383,9 +385,7 @@
                                         <tr><th class="p-3">ফুলের ধরণ</th><th class="p-3">পরিমাণ</th><th class="p-3">পাইকারি দাম</th><th class="p-3 text-right">বাজার চাহিদা</th></tr>
                                     </thead>
                                     <tbody id="flower-market-table" class="divide-y divide-slate-900 text-slate-300">
-                                        <tr class="item-row"><td class="p-3 font-semibold text-pink-400 item-name">লাল গোলাপ (দেশি)</td><td class="p-3">১০০ পিস</td><td class="p-3 text-amber-400">৳৩৫০ - ৳৪০০</td><td class="p-3 text-right text-emerald-400 font-bold">উচ্চ</td></tr>
-                                        <tr class="item-row"><td class="p-3 font-semibold text-amber-400 item-name">জারবেরা (হাইбриড কালার)</td><td class="p-3">১০০ পিস</td><td class="p-3 text-amber-400">৳৬০০ - ৳৮০০</td><td class="p-3 text-right text-yellow-400 font-bold">মাঝারি</td></tr>
-                                        <tr class="item-row"><td class="p-3 font-semibold text-white item-name">রজনীগন্ধা (সিঙ্গেল স্টিক)</td><td class="p-3">১০০ পিস</td><td class="p-3 text-amber-400">৳২৫০ - ৳৩০০</td><td class="p-3 text-right text-emerald-400 font-bold">উচ্চ</td></tr>
+                                        <!-- Javascript Dynamically Inject Objects here -->
                                     </tbody>
                                 </table>
                             </div>
@@ -450,11 +450,9 @@
                         </div>
                         
                         <div id="liveJobsList" class="flex-1 overflow-y-auto space-y-3 pr-1">
-                            <!-- Dynamically Injected Nodes go here -->
                             <p class="text-slate-500 text-center text-xs py-12">সার্ভার থেকে ডেটা লোড হচ্ছে...</p>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -468,13 +466,12 @@
         const _supabaseKey = "your-anon-key";
         let supabaseClient = null;
         
-        // Anti-crash client configuration validation on window initialization
         function initializeSupabase() {
             if(typeof supabase !== 'undefined' && supabase !== null && _supabaseUrl !== "https://your-supabase-url.supabase.co" && _supabaseUrl.trim() !== "") {
                 try {
                     supabaseClient = supabase.createClient(_supabaseUrl, _supabaseKey);
                 } catch(e) { 
-                    console.warn("Supabase Configuration bypassed successfully. Gateway redirected to local fallback matrix."); 
+                    console.warn("Supabase Configuration bypassed."); 
                 }
             }
         }
@@ -509,6 +506,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             initializeSupabase();
             initLiveClock();
+            renderMarketGrid(); // Dynamic Render Engine Call
             fetchLiveJobs();
         });
 
@@ -562,7 +560,6 @@
                 document.getElementById('active-user-display').innerText = user;
                 if(errorPanel) errorPanel.classList.add('hidden');
                 
-                // Animate Core Gateway Transitions
                 document.getElementById('auth-screen').classList.add('hidden');
                 const mainDash = document.getElementById('main-dashboard');
                 mainDash.classList.remove('hidden');
@@ -580,7 +577,6 @@
             document.getElementById('auth-screen').classList.remove('hidden');
         }
 
-        // Tab Switching Engine Grid
         function switchTab(tabId) {
             const tabs = ['dashboard', 'archive', 'market', 'jobs'];
             tabs.forEach(t => {
@@ -596,7 +592,6 @@
             });
         }
 
-        // Eco Reward System Algorithm 
         function addEcoTokens() {
             const wasteSelect = document.getElementById('waste-select');
             if(!wasteSelect) return;
@@ -612,7 +607,6 @@
             alert(`🪙 অভিনন্দন! আপনার রিসাইক্লিং সাকসেসফুল হয়েছে। আপনি আরও +${tokenReward} JDC রিওয়ার্ড ক্রেডিট অর্জন করেছেন।`);
         }
 
-        // Market Matrix Search Filter Optimization Engine
         function filterMarketEngine() {
             const searchInput = document.getElementById('market-search');
             if(!searchInput) return;
@@ -645,7 +639,6 @@
                 } catch(err) { console.log("Supabase Fetch Fallback active."); }
             }
 
-            // Fallback Local Storage Render Engine
             appState.localJobs.forEach(job => injectJobNode(listEl, job));
             updateJobCounter(appState.localJobs.length);
         }
@@ -661,7 +654,7 @@
                 </div>
                 <div class="sm:text-right flex sm:flex-col justify-between items-center sm:items-end gap-2 border-t border-slate-900 sm:border-0 pt-2 sm:pt-0">
                     <span class="text-amber-400 font-bold font-orbitron text-[11px] bg-amber-500/5 border border-amber-500/10 px-2 py-0.5 rounded-md">${job.salary}</span>
-                    <button onclick="alert('আবেদন মডিউল সফল! আপনার প্রোফাইল বিবরণ ${job.company} পোর্টালে পাঠানো হয়েছে।')" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-3 py-1.5 rounded-lg text-xs transition cursor-pointer">আবেদন করুন</button>
+                    <button onclick="alert('আবেদন মডিউল সফল! আপনার প্রোফাইল বিবরণ পাঠানো হয়েছে।')" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-3 py-1.5 rounded-lg text-xs transition cursor-pointer">আবেদন করুন</button>
                 </div>
             `;
             container.appendChild(node);
@@ -685,23 +678,88 @@
                 requirements: requirements
             };
 
-            if (supabaseClient) {
-                try {
-                    const { error } = await supabaseClient.from('jhikargacha_jobs').insert([newJob]);
-                    if (error) console.error("Database transaction error.");
-                } catch(err) { console.log("Catch block handle input fallback."); }
-            }
-
             appState.localJobs.unshift(newJob);
             fetchLiveJobs();
-            
             document.getElementById('job-post-form').reset();
-            alert("🚀 নিয়োগ বিজ্ঞপ্তিটি সফলভাবে লাইভ ডেটাবেজে যুক্ত করা হয়েছে এবং ড্যাশবোর্ডে আপডেট হয়েছে!");
+            alert("🚀 নিয়োগ বিজ্ঞপ্তিটি সফলভাবে যুক্ত করা হয়েছে!");
         }
 
         function updateJobCounter(count = appState.localJobs.length) {
             const counterEl = document.getElementById('job-counter');
             if(counterEl) counterEl.innerText = `${count}টি খালি পদ`;
+        }
+
+
+        /* =========================================================================
+           🛒 DYNAMIC PRODUCTS HUB DATABASE ARRAY (এখানেই সব প্রোডাক্ট ডেটা আছে)
+           ========================================================================= */
+        
+        // ১. নিত্যপ্রয়োজনীয় কাঁচাবাজার ও খাদ্যসামগ্রী ডেটা লিস্ট
+        const foodProductsDatabase = [
+            { name: "মিনিকেট চাল (লোকাল প্রিমিয়াম)", unit: "১ কেজি", wholesale: "৳৬৪", retail: "৳৬৬" },
+            { name: "দেশি পেঁয়াজ (ঝিকরগাছা রূপান্তর)", unit: "১ কেজি", wholesale: "৳৫৫", retail: "৳৫৮" },
+            { name: "তাঁজা রুই মাছ (কপোতাক্ষ নদ)", unit: "১ কেজি", wholesale: "৳৩২০", retail: "৳৩৪০" },
+            { name: "সোনাভোগ আলু (নতুন)", unit: "১ কেজি", wholesale: "৳৩৫", retail: "৳৩৮" },
+            { name: "নাজিরশাইল চাল (বাশঁমতি গ্রেড)", unit: "১ কেজি", wholesale: "৳৭৮", retail: "৳৮২" },
+            { name: "দেশি রসুন (পাবনা কোয়ালিটি)", unit: "১ কেজি", wholesale: "৳১২০", retail: "৳১৩০" },
+            { name: "কাঁচামরিচ (লোকাল খেতের)", unit: "১ কেজি", wholesale: "৳৮০", retail: "৳৯৫" },
+            { name: "সয়াবিন তেল (তীর/রুপচাঁদা)", unit: "১ লিটার", wholesale: "৳১৬২", retail: "৳১৬৮" },
+            { name: "দেশি মসুর ডাল (সরু দানা)", unit: "১ কেজি", wholesale: "৳১৩০", retail: "৳১৩৮" },
+            { name: "খাঁটি গরুর দুধ (পানিসরা ডেইরি)", unit: "১ লিটার", wholesale: "৳৭৫", retail: "৳৮৫" },
+            { name: "ব্রয়লার মুরগি (লাইভ খামার)", unit: "১ কেজি", wholesale: "৳১৭৫", retail: "৳১৮৫" },
+            { name: "দেশি মাগুর মাছ (কপোতাক্ষ অববাহিকা)", unit: "১ কেজি", wholesale: "৳৬৫০", retail: "৳৭০০" }
+            // 💡 নতুন প্রোডাক্ট বাড়ানোর নিয়ম: উপরে একটা কমা (,) দিয়ে ঠিক এই লাইনের মতো ব্র্যাকেট দিয়ে নাম আর দাম লিখে দিন!
+        ];
+
+        // ২. গদখালী পাইকারি ফুলের বাজার ডেটা লিস্ট
+        const flowerProductsDatabase = [
+            { name: "লাল গোলাপ (দেশি মিরাকল)", unit: "১০০ পিস", wholesale: "৳৩৫০ - ৳৪০০", retail: "উচ্চ" },
+            { name: "জারবেরা (হাইбриড মিক্স কালার)", unit: "১০০ পিস", wholesale: "৳৬০০ - ৳৮০০", retail: "মাঝারি" },
+            { name: "রজনীগন্ধা (সিঙ্গেল ডাবল স্টিক)", unit: "১০০ পিস", wholesale: "৳২৫০ - ৳৩০০", retail: "উচ্চ" },
+            { name: "গ্ল্যাডিওলাস (লং স্টিক হোয়াইট)", unit: "১০০ পিস", wholesale: "৳৫০০ - ৳৭০০", retail: "মাঝারি" },
+            { name: "হলুদ গাঁদা ফুল (বড় সাইজ)", unit: "১০০০ পিস", wholesale: "৳৩০০ - ৳৪৫০", retail: "উচ্চ" },
+            { name: "জারবেরা (রয়েল স্কয়ার পিঙ্ক)", unit: "১০০ পিস", wholesale: "৳৭০০ - ৳৯০০", retail: "মাঝারি" },
+            { name: "ডাচ টিউলিপ (গদখালী শেড প্রজেক্ট)", unit: "১ পিস", wholesale: "৳৮০ - ৳১০০", retail: "খুব উচ্চ" },
+            { name: "থাই অর্কিড (পার্পল নোড)", unit: "৫০ পিস", wholesale: "৳১২০০ - ৳১৫০০", retail: "সীমিত" },
+            { name: "কামিনী পাতার তোড়া (সাজসজ্জা)", unit: "১ আটি", wholesale: "৳৪০ - ৳৬০", retail: "নরমাল" },
+            { name: "ক্যালেন্ডুলা (উইন্টার স্পেশাল)", unit: "১০০ পিস", wholesale: "৳৪00 - ৳৫৫০", retail: "মাঝারি" }
+            // 💡 ফুলের প্রোডাক্ট বাড়াতে চাইলে ঠিক একইভাবে এই লাইনের উপরে কমা দিয়ে অবজেক্ট অ্যাড করুন।
+        ];
+
+        // ৩. ডায়নামিক প্রোডাক্ট রেন্ডার ইঞ্জিন (লুপ ফাংশন)
+        function renderMarketGrid() {
+            const foodTable = document.getElementById('food-market-table');
+            const flowerTable = document.getElementById('flower-market-table');
+            
+            if(foodTable) {
+                foodTable.innerHTML = foodProductsDatabase.map(product => `
+                    <tr class="item-row">
+                        <td class="p-3 font-semibold item-name">${product.name}</td>
+                        <td class="p-3">${product.unit}</td>
+                        <td class="p-3 text-emerald-400">${product.wholesale}</td>
+                        <td class="p-3 text-right font-bold text-slate-100">${product.retail}</td>
+                    </tr>
+                `).join('');
+            }
+            
+            if(flowerTable) {
+                flowerTable.innerHTML = flowerProductsDatabase.map(product => {
+                    let textClass = "text-white";
+                    if(product.name.includes("গোলাপ")) textClass = "text-pink-400";
+                    else if(product.name.includes("জারবেরা")) textClass = "text-amber-400";
+                    else if(product.name.includes("গাঁদা")) textClass = "text-yellow-500";
+                    else if(product.name.includes("টিউলিপ")) textClass = "text-red-400";
+
+                    return `
+                        <tr class="item-row">
+                            <td class="p-3 font-semibold ${textClass} item-name">${product.name}</td>
+                            <td class="p-3">${product.unit}</td>
+                            <td class="p-3 text-amber-400">${product.wholesale}</td>
+                            <td class="p-3 text-right text-emerald-400 font-bold">${product.retail}</td>
+                        </tr>
+                    `;
+                }).join('');
+            }
         }
     </script>
 </body>
