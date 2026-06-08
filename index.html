@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Hind_Siliguri:wght@400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
     
-    <!-- Supabase JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     
     <style>
@@ -59,7 +58,6 @@
 </head>
 <body class="cyber-gradient text-slate-100 min-h-screen flex flex-col justify-center items-center p-4 selection:bg-emerald-500 selection:text-slate-950">
 
-    <!-- Auth Screen Block -->
     <div id="auth-screen" class="w-full max-w-md auth-glass rounded-3xl p-8 fade-in z-50">
         <div class="text-center mb-8">
             <div class="inline-flex p-3.5 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 mb-3">
@@ -98,7 +96,6 @@
         </div>
     </div>
 
-    <!-- Main Dashboard Block -->
     <div id="main-dashboard" class="hidden w-full max-w-7xl flex flex-col min-h-screen fade-in">
         
         <header class="border-b border-slate-800/50 bg-[#070a13]/70 backdrop-blur-xl rounded-2xl px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
@@ -128,7 +125,6 @@
             </div>
         </header>
 
-        <!-- Navigation Tabs -->
         <div class="bg-slate-900/30 p-1.5 rounded-2xl border border-slate-800/40 flex flex-wrap gap-2 mb-6">
             <button onclick="switchTab('dashboard')" id="tab-dashboard" class="active-tab px-5 py-3 text-xs font-medium rounded-xl transition-all cursor-pointer flex items-center space-x-2">
                 <i class="fa-solid fa-compass"></i> <span>কমান্ড সেন্টার (হোম)</span>
@@ -137,18 +133,16 @@
                 <i class="fa-solid fa-landmark-dome"></i> <span>ঝিকরগাছা মেগা আর্কাইভ</span>
             </button>
             <button onclick="switchTab('market')" id="tab-market" class="px-5 py-3 text-xs font-medium rounded-xl text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 transition-all cursor-pointer flex items-center space-x-2">
-                <i class="fa-solid fa-layer-group"></i> <span>স্মার্ট বাজার ও দ্রব্যমূল্য 🔎</span>
+                <i class="fa-solid fa-layer-group"></i> <span>স্মার্ট বাজার ও द्रव्यমূল্য 🔎</span>
             </button>
             <button onclick="switchTab('jobs')" id="tab-jobs" class="px-5 py-3 text-xs font-medium rounded-xl text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 transition-all cursor-pointer flex items-center space-x-2">
                 <i class="fa-solid fa-briefcase"></i> <span>বেকারত্ব-মুক্ত কর্মসংস্থান</span>
-                <span class="bg-emerald-500/20 text-emerald-400 text-[9px] px-1.5 py-0.5 rounded-md font-bold" id="job-counter">৩টি খালি পদ</span>
+                <span class="bg-emerald-500/20 text-emerald-400 text-[9px] px-1.5 py-0.5 rounded-md font-bold" id="job-counter">০টি খালি পদ</span>
             </button>
         </div>
 
-        <!-- Main Workspace Viewports -->
         <main class="flex-1">
             
-            <!-- View: Dashboard -->
             <div id="view-dashboard" class="space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="glass-panel p-5 rounded-2xl border border-emerald-500/10">
@@ -188,9 +182,9 @@
                     </div>
 
                     <div class="glass-panel p-5 rounded-2xl border border-amber-500/10">
-                        <h3 class="text-sm font-bold text-amber-400 mb-3 flex items-center gap-2"><i class="fa-solid fa-earth-asia"></i> জিও-লোকেশন ও ইউনিক ম্যাপিং টুলস</h3>
+                        <h3 class="text-sm font-bold text-amber-400 mb-3 flex items-center gap-2"><i class="fa-solid fa-earth-asia"></i> জিо-লোকেশন ও ইউনিক ম্যাপিং টুলস</h3>
                         <div class="space-y-2">
-                            <a href="https://www.google.com/maps?q=Jhikargacha" target="_blank" class="flex justify-between items-center bg-slate-950/60 p-3 rounded-xl border border-slate-900 hover:border-amber-500/30 text-xs transition">
+                            <a href="https://maps.google.com" target="_blank" class="flex justify-between items-center bg-slate-950/60 p-3 rounded-xl border border-slate-900 hover:border-amber-500/30 text-xs transition">
                                 <span class="flex items-center gap-2"><i class="fa-solid fa-map-location-dot text-emerald-400"></i> গুগল ম্যাপস (ঝিকরগাছা)</span>
                                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-500"></i>
                             </a>
@@ -246,295 +240,452 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    
                     <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-start mb-4">
-                                <div><span class="text-[9px] text-emerald-400 font-black uppercase tracking-wider">Web3 Reward Node</span><h3 class="text-lg font-bold mt-0.5">ইকো-রিওয়ার্ড গ্রিড</h3></div>
+                                <div>
+                                    <span class="text-[9px] text-emerald-400 font-black uppercase tracking-wider">Web3 Reward Node</span>
+                                    <h3 class="text-lg font-bold mt-0.5">ইকো-রিওয়ার্ড গ্রিড</h3>
+                                </div>
                                 <i class="fa-solid fa-leaf text-emerald-400 text-lg"></i>
                             </div>
+                            
                             <div class="grid grid-cols-2 gap-2 mb-4 text-xs">
-                                <div class="bg-slate-950 p-3 rounded-xl border border-slate-900"><p class="text-slate-400">রিসাইকেলড বর্জ্য</p><p id="eco-waste-display" class="text-base font-bold text-slate-200 mt-0.5">241.8 Kg</p></div>
-                                <div class="bg-slate-950 p-3 rounded-xl border border-slate-900"><p class="text-slate-400">টোকেন ব্যালেন্স</p><p class="text-base font-bold text-amber-400 mt-0.5" id="eco-credits">2410 JDC</p></div>
+                                <div class="bg-slate-950 p-3 rounded-xl border border-slate-900">
+                                    <p class="text-slate-400">রিসাইকেল্ড বর্জ্য</p>
+                                    <p id="eco-waste-display" class="text-base font-bold text-emerald-400">0 kg</p>
+                                </div>
+                                <div class="bg-slate-950 p-3 rounded-xl border border-slate-900">
+                                    <p class="text-slate-400">টোকেন ব্যালেন্স</p>
+                                    <p id="eco-token-display" class="text-base font-bold text-cyan-400">0 JDC</p>
+                                </div>
                             </div>
+
                             <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-900 text-xs mb-4">
                                 <label class="text-slate-400 block mb-1.5">স্মার্ট বিন ফিড ইনপুট:</label>
-                                <select id="waste-select" class="w-full bg-slate-900 border border-slate-800 p-2.5 rounded-lg text-slate-200 focus:outline-none">
-                                    <option value="10">প্লাস্টিক বোثل ও ক্যান (+10 JDC)</option>
+                                <select id="waste-select" class="w-full bg-slate-900 border border-slate-800 p-2 rounded-lg text-slate-300 focus:outline-none focus:border-emerald-500 text-xs">
+                                    <option value="10">প্লাস্টিক বোতল ও ক্যান (+10 JDC)</option>
                                     <option value="50">পরিত্যক্ত ইলেকট্রনিক সামগ্রী (+50 JDC)</option>
-                                    <option value="15">বাজারের পচা সবজি ও জৈব ময়লা (+15 JDC)</option>
+                                    <option value="15">বাজারের পচা সবজি ও জৈব ময়লা (+15 JDC)</option>
                                 </select>
                             </div>
                         </div>
-                        <button onclick="addEcoTokens()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold py-3 rounded-xl text-xs transition cursor-pointer">স্মার্ট বিন কিউআর স্ক্যান</button>
+                        <button onclick="addEcoTokens()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition duration-200 cursor-pointer">টোকেন ক্লেইম করুন 🪙</button>
                     </div>
+                 <button type="submit" id="submitJobBtn" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold py-3 px-4 rounded-xl shadow-lg shadow-emerald-500/10 transition duration-200 text-sm mt-2">
+                        লাইভ পোস্ট করুন 🚀
+                    </button>
+                </form>
+            </div>
+        </div>
 
-                    <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between">
-                        <div>
-                            <div class="flex justify-between items-start mb-4">
-                                <div><span class="text-[9px] text-blue-400 font-black uppercase tracking-wider">Cognitive Matrix</span><h3 class="text-lg font-bold mt-0.5">নিও-লার্ন হাব</h3></div>
-                                <i class="fa-solid fa-brain text-blue-400 text-lg"></i>
-                            </div>
-                            <div class="flex gap-1.5 mb-3">
-                                <button id="m-comic" onclick="changeLMode('comic')" class="flex-1 bg-blue-500/20 border border-blue-500/40 text-blue-400 p-2 rounded-lg text-[10px] font-bold cursor-pointer">কমিক মোড</button>
-                                <button id="m-scifi" onclick="changeLMode('scifi')" class="flex-1 bg-slate-950 text-slate-400 p-2 rounded-lg text-[10px] font-bold cursor-pointer">সাই-ফাই মোড</button>
-                            </div>
-                            <div id="learn-output" class="bg-slate-950 border border-slate-900 p-3 rounded-xl text-xs h-[100px] overflow-y-auto text-slate-300 leading-relaxed italic">কোনো জটিল বৈজ্ঞানিক তত্ত্ব বা থিওরি নিচে টাইপ করুন...</div>
-                        </div>
-                        <div class="mt-4 flex gap-2">
-                            <input id="learn-input" type="text" placeholder="যেমন: কোয়ান্টাম ফিজিক্স..." class="flex-1 bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-xs focus:outline-none text-slate-200">
-                            <button onclick="runAiLearn()" class="bg-blue-500 hover:bg-blue-600 px-4 rounded-xl text-xs font-bold cursor-pointer"><i class="fa-solid fa-paper-plane text-slate-950"></i></button>
-                        </div>
-                    </div>
+        <div class="lg:col-span-3 bg-slate-950/40 p-5 rounded-xl border border-slate-900 flex flex-col">
+            <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-2">
+                <h3 class="text-emerald-400 font-bold text-sm flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>🟢 লাইভ নিয়োজন ফিড</span>
+                </h3>
+                <button onclick="fetchLiveJobs()" class="border border-cyan-500/40 hover:bg-cyan-500/10 text-cyan-400 text-[11px] px-2.5 py-1 rounded-md transition duration-200">
+                    রিফ্রেশ 🔄
+                </button>
+            </div>
+            
+            <div id="liveJobsList" class="flex-1 max-h-[440px] overflow-y-auto space-y-3 pr-1">
+                <p class="text-slate-500 text-center text-xs py-8">সার্ভার থেকে ডেটা লোড হচ্ছে...</p>
+            </div>
+        </div>
 
-                    <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between">
-                        <div>
-                            <div class="flex justify-between items-start mb-4">
-                                <div><span class="text-[9px] text-red-400 font-black uppercase tracking-wider">Secure Ledger</span><h3 class="text-lg font-bold mt-0.5">ভয়েস অফ জাস্টিস</h3></div>
-                                <i class="fa-solid fa-scale-balanced text-red-400 text-lg"></i>
-                            </div>
-                            <textarea id="justice-input" rows="2" placeholder="দুর্নীতি, প্রশাসনিক অবহেলা বা সামাজিক অপরাধের সঠিক বিবরণ দিন (আপনার পরিচয় সম্পূর্ণ গোপন থাকবে)..." class="w-full bg-slate-950 border border-slate-800 p-3 rounded-xl text-xs text-slate-200 focus:outline-none resize-none mb-3"></textarea>
-                            <div id="justice-output" class="hidden bg-red-500/5 border border-red-500/20 p-2.5 rounded-xl text-[10px] text-slate-400 leading-relaxed"></div>
-                        </div>
-                        <button onclick="runAiJustice()" class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 rounded-xl text-xs transition cursor-pointer">AI জাস্টিস ব্রডকাস্ট</button>
-                    </div>
+    </div>
+</div>
+
+<div id="view-archive" class="hidden space-y-6">
+    <div class="glass-panel rounded-2xl p-6">
+        <h2 class="text-2xl font-bold text-emerald-400 border-b border-slate-800 pb-3 mb-6 flex items-center gap-2"><i class="fa-solid fa-bookmark"></i> ঝিকরগাছা উপজেলা: সমৃদ্ধ ইতিহাস ও অর্থনৈতিক চালচিত্র</h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 text-xs">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-900"><p class="text-slate-400">প্রশাসনিক এরিয়া</p><p class="text-sm font-bold text-slate-200 mt-0.5">১১টি ইউনিয়ন, ১টি পৌরসভা</p></div>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-900"><p class="text-slate-400">অর্থনৈতিক হিলিয়াম</p><p class="text-sm font-bold text-emerald-400 mt-0.5">৩০০ কোটি টাকার ফ্লাওয়ার মার্কেট</p></div>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-900"><p class="text-slate-400">প্রধান নদী লাইন</p><p class="text-sm font-bold text-slate-200 mt-0.5">ঐতিহাসিক কপোতাক্ষ নদ</p></div>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-900"><p class="text-slate-400">ঐতিহ্যবাহী শিক্ষাপীঠ</p><p class="text-sm font-bold text-blue-400 mt-0.5">ঝিকরগাছা বিএম হাই স্কুল</p></div>
+        </div>
+
+        <div class="space-y-6 text-xs leading-relaxed text-slate-300">
+            <div class="border-l-2 border-emerald-500 pl-4">
+                <h3 class="text-base font-bold text-slate-100 mb-1">🌷 গদখালী ও পানিসরা ফ্লাওয়ার বেল্ট</h3>
+                <p>ঝিকরগাছা উপজেলার গদখালী ও পানিসরা ইউনিয়নকে যৌথভাবে বাংলাদেশের **"ফুলের রাজধানী"** বলা হয়। দেশের প্রায় ৭৫% ফুলের চাহিদা এখান থেকে পূরণ করা হয়। বর্তমানে সেখানে আধুনিক plastic শেড নেট ও টিউলিপ প্রসেসিং প্ল্যান্ট ব্যবহার করে ফুল চাষকে একটি গ্লোবাল ইন্ডাস্ট্রিতে রূপ দেওয়া হচ্ছে।</p>
+            </div>
+            <div class="border-l-2 border-blue-500 pl-4">
+                <h3 class="text-base font-bold text-slate-100 mb-1">🌊 কপোতাক্ষ নদের অর্থনৈতিক ও ভৌগোলিক গুরুত্ব</h3>
+                <p>মহাকবি মাইকেল মধুসূদন দত্তের স্মৃতিবিজড়িত কপোতাক্ষ নদ ঝিকরগাছার বুক চিরে প্রবাহিত হয়েছে। এই নদের দুই পাড়ের অববাহিকায় উৎপাদিত কৃষি পণ্য সামগ্রী এই অঞ্চলের অর্থনীতির মূল চালিকাশক্তি। ব্রিটিশ আমলে তৈরি কপোতাক্ষ ব্রীজ eastbound পরিবহনের অন্যতম ঐতিহাসিক নিদর্শন।</p>
+            </div>
+            <div class="border-l-2 border-amber-500 pl-4 bg-amber-500/5 p-4 rounded-r-xl border border-amber-500/10">
+                <h3 class="text-base font-bold text-amber-400 mb-1"><i class="fa-solid fa-building-columns"></i> ঝিকরগাছা কেন্দ্রীয় ডিজিটাল লাইব্রেরি প্রজেক্ট</h3>
+                <p>ঝিকরগাছার তরুণ ও শিক্ষার্থী সমাজের উদ্যোগে এবং স্থানীয় administrations এর ১ লক্ষ টাকা সরকারি বাজেট বরাদ্দের মাধ্যমে উপজেলা সদরে একটি **অত্যাধুনিক কেন্দ্রীয় ডিজিটাল লাইব্রেরি** প্রতিষ্ঠার কাজ চলছে। এটি ঝিকরগাছার প্রতিটি শিক্ষার্থীকে বিনামূল্যে উন্নত বিজ্ঞান, কোডিং এবং রোবোটিক্সের ই-বুক ও গ্লোবাল জার্নাল পড়ার সুযোগ করে দেবে。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="view-market" class="hidden space-y-6">
+    <div class="glass-panel rounded-2xl p-6">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-800 pb-4 mb-6">
+            <div>
+                <h2 class="text-xl font-bold text-amber-400 flex items-center gap-2"><i class="fa-solid fa-calculator"></i> সিন্ডিকেট-মুক্ত লাইভ বাজার ম্যাট্রিক্স</h2>
+                <p class="text-xs text-slate-400 mt-0.5">ঝিকরগাছা সদর বাজার ও গদখালী আড়তের দামের সরাসরি সমন্বিত তালিকা।</p>
+            </div>
+            <div class="relative w-full md:w-80">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-xs"></i>
+                <input type="text" id="market-search" onkeyup="filterMarketEngine()" placeholder="পণ্য বা নির্দিষ্ট ফুলের নাম টাইপ করুন... 🔎" class="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 pl-10 pr-4 text-xs focus:outline-none focus:border-amber-500 text-slate-100 transition-all">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-slate-950/40 p-4 rounded-xl border border-slate-900">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 border-l-2 border-blue-500 pl-2">নিত্যপ্রয়োজনীয় কাঁচাবাজার ও খাদ্যসামগ্রী</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-slate-900/60 text-slate-400 border-b border-slate-800">
+                            <tr><th class="p-3">পণ্যের বিবরণ</th><th class="p-3">ইউনিট</th><th class="p-3">আড়ত দর</th><th class="p-3 text-right">খুচরা বাজার দর</th></tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-900 text-slate-300">
+                            <tr class="item-row"><td class="p-3 font-semibold item-name">মিনিকেট চাল (লোকাল প্রিমিয়াম)</td><td class="p-3">১ কেজি</td><td class="p-3 text-emerald-400">৳৬৪</td><td class="p-3 text-right font-bold text-slate-100">৳৬৬</td></tr>
+                            <tr class="item-row"><td class="p-3 font-semibold item-name">দেশি পেঁয়াজ (ঝিকরগাছা রূপান্তর)</td><td class="p-3">১ কেজি</td><td class="p-3 text-emerald-400">৳৫৫</td><td class="p-3 text-right font-bold text-slate-100">৳৫৮</td></tr>
+                            <tr class="item-row"><td class="p-3 font-semibold item-name">তাঁজা রুই মাছ (কপোতাক্ষ নদ)</td><td class="p-3">১ কেজি</td><td class="p-3 text-emerald-400">৳৩২০</td><td class="p-3 text-right font-bold text-slate-100">৳৩৪০</td></tr>
+                            <tr class="item-row"><td class="p-3 font-semibold item-name">সোনাভোগ আলু (নতুন)</td><td class="p-3">১ কেজি</td><td class="p-3 text-emerald-400">৳৩৫</td><td class="p-3 text-right font-bold text-slate-100">৳৩৮</td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <!-- View: Archive -->
-            <div id="view-archive" class="hidden space-y-6">
-                <div class="glass-panel rounded-2xl p-6">
-                    <h2 class="text-2xl font-bold text-emerald-400 border-b border-slate-800 pb-3 mb-6 flex items-center gap-2"><i class="fa-solid fa-bookmark"></i> ঝিকরগাছা উপজেলা: সমৃদ্ধ ইতিহাস ও অর্থনৈতিক চালচিত্র</h2>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 text-xs">
-                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-900"><p class="text-slate-400">প্রশাসনিক এরিয়া</p><p class="text-sm font-bold text-slate-200 mt-0.5">১১টি ইউনিয়ন, ১টি পৌরসভা</p></div>
-                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-900"><p class="text-slate-400">অর্থনৈতিক হিলিয়াম</p><p class="text-sm font-bold text-emerald-400 mt-0.5">৩০০ কোটি টাকার ফ্লাওয়ার মার্কেট</p></div>
-                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-900"><p class="text-slate-400">প্রধান নদী লাইন</p><p class="text-sm font-bold text-slate-200 mt-0.5">ঐতিহাসিক কপোতাক্ষ নদ</p></div>
-                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-900"><p class="text-slate-400">ঐতিহ্যবাহী শিক্ষাপীঠ</p><p class="text-sm font-bold text-blue-400 mt-0.5">ঝিকরগাছা বিএম হাই স্কুল</p></div>
-                    </div>
+            <div class="bg-slate-950/40 p-4 rounded-xl border border-slate-900">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 border-l-2 border-emerald-500 pl-2">গদখালী পাইকারি ফুলের বাজার ডায়েরি</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-slate-900/60 text-slate-400 border-b border-slate-800">
+                            <tr><th class="p-3">ফুলের ধরণ</th><th class="p-3">পরিমাণ</th><th class="p-3">পাইকারি দাম</th><th class="p-3 text-right">বাজার চাহিদা</th></tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-900 text-slate-300">
+                            <tr class="item-row"><td class="p-3 font-semibold text-pink-400 item-name">লাল গোলাপ (দেশি)</td><td class="p-3">১০০ পিস</td><td class="p-3 text-amber-400">৳৩৫০ - ৳৪০০</td><td class="p-3 text-right text-emerald-400 font-bold">উচ্চ</td></tr>
+                            <tr class="item-row"><td class="p-3 font-semibold text-amber-400 item-name">জারবেরা (হাইব্রিড কালার)</td><td class="p-3">১০০ পিস</td><td class="p-3 text-amber-400">৳৬০০ - ৳৮০০</td><td class="p-3 text-right text-yellow-400 font-bold">মাঝারি</td></tr>
+                            <tr class="item-row"><td class="p-3 font-semibold text-white item-name">রজনীগন্ধা (সিঙ্গেল স্টিক)</td><td class="p-3">১০০ পিস</td><td class="p-3 text-amber-400">৳২৫০ - ৳৩০০</td><td class="p-3 text-right text-emerald-400 font-bold">উচ্চ</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                    <div class="space-y-6 text-xs leading-relaxed text-slate-300">
-                        <div class="border-l-2 border-emerald-500 pl-4">
-                            <h3 class="text-base font-bold text-slate-100 mb-1">🌷 গদখালী ও পানিসরা ফ্লাওয়ার বেল্ট</h3>
-                            <p>ঝিকরগাছা উপজেলার গদখালী ও পানিসরা ইউনিয়নকে যৌথভাবে বাংলাদেশের **"ফুলের রাজধানী"** বলা হয়। দেশের প্রায় ৭৫% ফুলের চাহিদা এখান থেকে পূরণ করা হয়। বর্তমানে সেখানে আধুনিক প্লাস্টিক শেড নেট ও টিউলিপ প্রсеসিং প্ল্যান্ট ব্যবহার করে ফুল চাষকে একটি গ্লোবাল ইন্ডাস্ট্রিতে রূপ দেওয়া হচ্ছে।</p>
-                        </div>
-                        <div class="border-l-2 border-blue-500 pl-4">
-                            <h3 class="text-base font-bold text-slate-100 mb-1">🌊 কপোতাক্ষ নদের অর্থনৈতিক ও ভৌগোলিক গুরুত্ব</h3>
-                            <p>মহাকবি মাইকেল মধুসূদন দত্তের স্মৃতিবিজড়িত কপোতাক্ষ নদ ঝিকরগাছার বুক চিরে প্রবাহিত হয়েছে। এই নদের দুই পাড়ের অববাহিকায় উৎপাদিত কৃষি পণ্য সামগ্রী এই অঞ্চলের অর্থনীতির মূল চালিকাশক্তি। ব্রিটিশ আমলে তৈরি কপোতাক্ষ ব্রীজ eastbound পরিবহনের অন্যতম ঐতিহাসিক নিদর্শন।</p>
-                        </div>
-                        <div class="border-l-2 border-amber-500 pl-4 bg-amber-500/5 p-4 rounded-r-xl border border-amber-500/10">
-                            <h3 class="text-base font-bold text-amber-400 mb-1"><i class="fa-solid fa-building-columns"></i> ঝিকরগাছা কেন্দ্রীয় ডিজিটাল লাইব্রেরি প্রজেক্ট</h3>
-                            <p>ঝিকরগাছার তরুণ ও শিক্ষার্থী সমাজের উদ্যোগে এবং স্থানীয় administrations এর ১ লক্ষ টাকা সরকারি বাজেট বরাদ্দের মাধ্যমে উপজেলা সদরে একটি **অत्याধুনিক কেন্দ্রীয় ডিজিটাল লাইব্রেরি** প্রতিষ্ঠার কাজ চলছে। এটি ঝিকরগাছার প্রতিটি শিক্ষার্থীকে বিনামূল্যে উন্নত বিজ্ঞান, কোডিং এবং রোবোটিক্সের ই-বুক ও গ্লোবাল জার্নাল পড়ার সুযোগ করে দেবে।</p>
-                        </div>
-                    </div>
+<div id="view-jobs" class="hidden space-y-6">
+    <div class="glass-panel rounded-2xl p-6">
+        <h2 class="text-xl font-bold text-emerald-400 border-b border-slate-800 pb-3 mb-4"><i class="fa-solid fa-briefcase"></i> 스마트 কর্মসংস্থান পোর্টাল (ঝিকরগাছা জোন)</h2>
+        <div class="space-y-3">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-900 hover:border-emerald-500/20 transition flex justify-between items-center">
+                <div>
+                    <h3 class="text-sm font-bold text-slate-200">১. ল্যাব অ্যাসিস্ট্যান্ট (রোবোটিক্স ও আইওটি হাব)</h3>
+                    <p class="text-xs text-slate-400 mt-1">প্রয়োজনীয় দক্ষতা: আরডুইনো, সার্কিট ডিজাইনিং এবং বেসিক সোল্ডারিং।</p>
+                </div>
+                <button onclick="alert('আবেদন সফল হয়েছে!')" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-4 py-2 rounded-lg text-xs cursor-pointer">আবেদন করুন</button>
+            </div>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-900 hover:border-emerald-500/20 transition flex justify-between items-center">
+                <div>
+                    <h3 class="text-sm font-bold text-slate-200">২. জুনিয়র ওয়েব ডেভেলপার (KNWeb স্টুডিও)</h3>
+                    <p class="text-xs text-slate-400 mt-1">প্রয়োজনীয় দক্ষতা: HTML5, CSS3, Tailwind CSS এবং বেসিক JavaScript।</p>
+                </div>
+                <button onclick="alert('আবেদন সফল হয়েছে!')" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-4 py-2 rounded-lg text-xs cursor-pointer">আবেদন করুন</button>
+            </div>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-900 hover:border-emerald-500/20 transition flex justify-between items-center">
+                <div>
+                    <h3 class="text-sm font-bold text-slate-200">৩. ডিজিটাল কন্টেন্ট ম্যানেজার (গদখালী এগ্রো-ট্রেড)</h3>
+                    <p class="text-xs text-slate-400 mt-1">প্রয়োজনীয় দক্ষতা: সোশাল media ম্যানেজমেন্ট এবং প্রোডাক্ট ফটোগ্রাফি।</p>
+                </div>
+                <button onclick="alert('আবেদন সফল হয়েছে!')" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-4 py-2 rounded-lg text-xs cursor-pointer">আবেদন করুন</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+    <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between">
+        <div>
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <span class="text-[9px] text-emerald-400 font-black uppercase tracking-wider">Eco Grid</span>
+                    <h3 class="text-lg font-bold mt-0.5">স্মার্ট বিন নেটওয়ার্ক</h3>
+                </div>
+                <i class="fa-solid fa-trash-can text-emerald-400 text-lg"></i>
+            </div>
+            <div class="grid grid-cols-2 gap-2 mb-4 text-xs">
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-900">
+                    <p class="text-slate-400">রিসাইকেল্ড বর্জ্য</p>
+                    <p id="eco-waste-display" class="text-base font-bold text-emerald-400">0 kg</p>
+                </div>
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-900">
+                    <p class="text-slate-400">টোকেন ব্যালেন্স</p>
+                    <p id="eco-credits" class="text-base font-bold text-cyan-400">0 JDC</p>
                 </div>
             </div>
 
-            <!-- View: Market -->
-            <div id="view-market" class="hidden space-y-6">
-                <div class="glass-panel rounded-2xl p-6">
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-800 pb-4 mb-6">
-                        <div>
-                            <h2 class="text-xl font-bold text-amber-400 flex items-center gap-2"><i class="fa-solid fa-calculator"></i> সিন্ডিকেট-মুক্ত লাইভ বাজার ম্যাট্রিক্স</h2>
-                            <p class="text-xs text-slate-400 mt-0.5">ঝিকরগাছা সদর বাজার ও গদখালী আড়তের দামের সরাসরি সমন্বিত তালিকা।</p>
-                        </div>
-                        <div class="relative w-full md:w-80">
-                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-xs"></i>
-                            <input type="text" id="market-search" onkeyup="filterMarketEngine()" placeholder="পণ্য বা নির্দিষ্ট ফুলের নাম টাইপ করুন... 🔎" class="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 pl-10 pr-4 text-xs focus:outline-none focus:border-amber-500 text-slate-100 transition-all">
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <div class="bg-slate-950/40 p-4 rounded-xl border border-slate-900">
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 border-l-2 border-blue-500 pl-2">নিত্যপ্রয়োজনীয় কাঁচাবাজার ও খাদ্যসামগ্রী</h3>
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-left text-xs">
-                                    <thead class="bg-slate-900/60 text-slate-400 border-b border-slate-800">
-                                        <tr><th class="p-3">পণ্যের বিবরণ</th><th class="p-3">ইউনিট</th><th class="p-3">আড়ত দর</th><th class="p-3 text-right">খুচরা বাজার দর</th></tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-slate-900 text-slate-300">
-                                        <tr class="item-row"><td class="p-3 font-semibold item-name">মিনিকেট চাল (লোকাল প্রিমিয়াম)</td><td class="p-3">১ কেজি</td><td class="p-3 text-emerald-400">৳৬৪</td><td class="p-3 text-right font-bold text-slate-100">৳৬৬</td></tr>
-                                        <tr class="item-row"><td class="p-3 font-semibold item-name">দেশি পেঁয়াজ (ঝিকরগাছা রূপান্তর)</td><td class="p-3">১ কেজি</td><td class="p-3 text-emerald-400">৳৫৫</td><td class="p-3 text-right font-bold text-slate-100">৳৫৮</td></tr>
-                                        <tr class="item-row"><td class="p-3 font-semibold item-name">তাঁজা রুই মাছ (কপোতাক্ষ নদ)</td><td class="p-3">১ কেজি</td><td class="p-3 text-emerald-400">৳৩২০</td><td class="p-3 text-right font-bold text-slate-100">৳৩৪০</td></tr>
-                                        <tr class="item-row"><td class="p-3 font-semibold item-name">সোনাভোগ আলু (নতুন)</td><td class="p-3">১ কেজি</td><td class="p-3 text-emerald-400">৳৩৫</td><td class="p-3 text-right font-bold text-slate-100">৳৩৮</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <div class="bg-slate-950/40 p-4 rounded-xl border border-slate-900">
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 border-l-2 border-emerald-500 pl-2">গদখালী পাইকারি ফুলের বাজার ডায়েরি</h3>
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-left text-xs">
-                                    <thead class="bg-slate-900/60 text-slate-400 border-b border-slate-800">
-                                        <tr><th class="p-3">ফুলের ধরণ</th><th class="p-3">পরিমাণ</th><th class="p-3">পাইকারি দাম</th><th class="p-3 text-right">বাজার চাহিদা</th></tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-slate-900 text-slate-300">
-                                        <tr class="item-row"><td class="p-3 font-semibold text-pink-400 item-name">লাল গোলাপ (দেশি)</td><td class="p-3">১০০ পিস</td><td class="p-3 text-amber-400">৳৩৫০ - ৳৪০০</td><td class="p-3 text-right text-emerald-400 font-bold">উচ্চ</td></tr>
-                                        <tr class="item-row"><td class="p-3 font-semibold text-amber-400 item-name">জারবেরা (হাইব্রিড কালার)</td><td class="p-3">১০০ পিস</td><td class="p-3 text-amber-400">৳৬০০ - ৳৮০০</td><td class="p-3 text-right text-yellow-400 font-bold">মাঝারি</td></tr>
-                                        <tr class="item-row"><td class="p-3 font-semibold text-white item-name">রজনীগন্ধা (সিঙ্গেল স্টিক)</td><td class="p-3">১০০ পিস</td><td class="p-3 text-amber-400">৳২৫০ - ৳৩০০</td><td class="p-3 text-right text-emerald-400 font-bold">উচ্চ</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-900 text-xs mb-4">
+                <label class="text-slate-400 block mb-1.5">স্মার্ট বিন ফিড ইনপুট:</label>
+                <select id="waste-select" class="w-full bg-slate-900 border border-slate-800 p-2.5 rounded-lg text-slate-200 focus:outline-none">
+                    <option value="10">প্লাস্টিক বোতল ও ক্যান (+10 JDC)</option>
+                    <option value="50">পরিত্যক্ত ইলেকট্রনিক সামগ্রী (+50 JDC)</option>
+                    <option value="15">বাজারের পচা সবজি ও জৈব ময়লা (+15 JDC)</option>
+                </select>
             </div>
-
-            <!-- View: Jobs -->
-            <div id="view-jobs" class="hidden space-y-6">
-                <div class="glass-panel rounded-2xl p-6">
-                    <h2 class="text-xl font-bold text-emerald-400 border-b border-slate-800 pb-3 mb-4"><i class="fa-solid fa-briefcase"></i> 스마트 কর্মসংস্থান পোর্টাল (ঝিকরগাছা জোন)</h2>
-                    <div class="space-y-3">
-                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-900 hover:border-emerald-500/20 transition flex justify-between items-center">
-                            <div>
-                                <h3 class="text-sm font-bold text-slate-200">১. ল্যাব অ্যাসিস্ট্যান্ট (রোবোটিক্স ও আইওটি হাব)</h3>
-                                <p class="text-xs text-slate-400 mt-1">প্রয়োজনীয় দক্ষতা: আরডুইনো, সার্কিট ডিজাইনিং এবং বেসিক সোল্ডারিং।</p>
-                            </div>
-                            <button onclick="alert('আবেদন সফল হয়েছে!')" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-4 py-2 rounded-lg text-xs cursor-pointer">আবেদন করুন</button>
-                        </div>
-                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-900 hover:border-emerald-500/20 transition flex justify-between items-center">
-                            <div>
-                                <h3 class="text-sm font-bold text-slate-200">২. জুনিয়র ওয়েব ডেভেলপার (KNWeb স্টুডিও)</h3>
-                                <p class="text-xs text-slate-400 mt-1">প্রয়োজনীয় দক্ষতা: HTML5, CSS3, Tailwind CSS এবং বেসিক JavaScript।</p>
-                            </div>
-                            <button onclick="alert('আবেদন সফল হয়েছে!')" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-4 py-2 rounded-lg text-xs cursor-pointer">আবেদন করুন</button>
-                        </div>
-                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-900 hover:border-emerald-500/20 transition flex justify-between items-center">
-                            <div>
-                                <h3 class="text-sm font-bold text-slate-200">৩. ডিজিটাল কন্টেন্ট ম্যানেজার (গদখালী এগ্রো-ট্রেড)</h3>
-                                <p class="text-xs text-slate-400 mt-1">প্রয়োজনীয় দক্ষতা: সোশাল media ম্যানেজমেন্ট এবং প্রোডাক্ট ফটোগ্রাফি।</p>
-                            </div>
-                            <button onclick="alert('আবেদন সফল হয়েছে!')" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-4 py-2 rounded-lg text-xs cursor-pointer">আবেদন করুন</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </main>
+        </div>
+        <button onclick="addEcoTokens()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold py-3 rounded-xl text-xs transition cursor-pointer">স্মার্ট বিন কিউআর স্ক্যান</button>
     </div>
 
-    <!-- JavaScript Core Control Engine (Supabase Integrated) -->
-    <script>
-        // আপনার সুপাবেস প্রজেক্টের লাইভ API লিংকিং
-        const SUPABASE_URL = "https://layibyizlxawzbcfckvv.supabase.co"; 
-        const SUPABASE_ANON_KEY = "sb_publishable_rb3OnkCg4B2fV_6B7qbg_Q_rojQxIxr";
-        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between">
+        <div>
+            <div class="flex justify-between items-start mb-4">
+                <div><span class="text-[9px] text-blue-400 font-black uppercase tracking-wider">Cognitive Matrix</span><h3 class="text-lg font-bold mt-0.5">নিও-লার্ন হাব</h3></div>
+                <i class="fa-solid fa-brain text-blue-400 text-lg"></i>
+            </div>
+            <div class="flex gap-1.5 mb-3">
+                <button id="m-comic" onclick="changeLMode('comic')" class="flex-1 bg-blue-500/20 border border-blue-500/40 text-blue-400 p-2 rounded-lg text-[10px] font-bold cursor-pointer">কমিক মোড</button>
+                <button id="m-scifi" onclick="changeLMode('scifi')" class="flex-1 bg-slate-950 text-slate-400 p-2 rounded-lg text-[10px] font-bold cursor-pointer">সাই-ফাই মোড</button>
+            </div>
+            <div id="learn-output" class="bg-slate-950 border border-slate-900 p-3 rounded-xl text-xs h-[100px] overflow-y-auto text-slate-300 leading-relaxed italic">কোনো জটিল বৈজ্ঞানিক তত্ত্ব বা থিওরি নিচে টাইপ করুন...</div>
+        </div>
+        <div class="mt-4 flex gap-2">
+            <input id="learn-input" type="text" placeholder="যেমন: কোয়ান্টাম ফিজিক্স..." class="flex-1 bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-xs focus:outline-none text-slate-200">
+            <button onclick="runAiLearn()" class="bg-blue-500 hover:bg-blue-600 px-4 rounded-xl text-xs font-bold cursor-pointer"><i class="fa-solid fa-paper-plane text-slate-950"></i></button>
+        </div>
+    </div>
 
-        let isSignUpMode = false;
-        let learningMode = 'comic';
-        let currentUserSession = null;
+    <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between">
+        <div>
+            <div class="flex justify-between items-start mb-4">
+                <div><span class="text-[9px] text-red-400 font-black uppercase tracking-wider">Secure Ledger</span><h3 class="text-lg font-bold mt-0.5">ভয়েস অফ জাস্টিস</h3></div>
+                <i class="fa-solid fa-scale-balanced text-red-400 text-lg"></i>
+            </div>
+            <textarea id="justice-input" rows="2" placeholder="দুর্নীতি, administrative অবহেলা বা সামাজিক অপরাধের সঠিক বিবরণ দিন (আপনার পরিচয় সম্পূর্ণ গোপন থাকবে)..." class="w-full bg-slate-950 border border-slate-800 p-3 rounded-xl text-xs text-slate-200 focus:outline-none resize-none mb-3"></textarea>
+            <div id="justice-output" class="hidden bg-red-500/5 border border-red-500/20 p-2.5 rounded-xl text-[10px] text-slate-400 leading-relaxed"></div>
+        </div>
+        <button onclick="runAiJustice()" class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 rounded-xl text-xs transition cursor-pointer">AI জাস্টিস ব্রডকাস্ট</button>
+    </div>
+</div>
 
-        // ১. রানটাইম লাইভ ক্লক
-        function startLiveClockEngine() {
-            const clockNode = document.getElementById("live-clock");
+<script>
+    // সুপাবেস কনফিগারেশন
+    const SUPABASE_URL = "https://layibyizlxawzbcfckvv.supabase.co"; 
+    const SUPABASE_ANON_KEY = "sb_publishable_rb3OnkCg4B2fV_6B7qbg_Q_rojQxIxr";
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    let isSignUpMode = false;
+    let learningMode = 'comic';
+    let currentUserSession = null;
+
+    document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(fetchLiveJobs, 1000); 
+    });
+
+    // ১. রানটাইম লাইভ ক্লক
+    function startLiveClockEngine() {
+        const clockNode = document.getElementById("live-clock");
+        if(clockNode) {
             setInterval(() => {
                 const now = new Date();
                 clockNode.innerHTML = `<i class="fa-regular fa-clock text-emerald-400"></i> ${now.toLocaleTimeString('bn-BD')}`;
             }, 1000);
         }
-        startLiveClockEngine();
+    }
+    startLiveClockEngine();
 
-        // ২. লগইন ও রেজিস্ট্রেশন উইন্ডো টগল (Sign Up / Login Switch)
-        function toggleAuthMode(event) {
-            if(event) event.preventDefault();
-            isSignUpMode = !isSignUpMode;
-            const title = document.getElementById("auth-title");
-            const subtitle = document.getElementById("auth-subtitle");
-            const submitBtn = document.getElementById("auth-submit-btn");
-            const toggleText = document.getElementById("toggle-text");
-            const toggleLink = document.getElementById("toggle-link");
-            const authIcon = document.getElementById("auth-icon");
-            document.getElementById("auth-error").classList.add("hidden");
+    // ২. সুপাবেস থেকে লাইভ জব নিয়ে আসা
+    async function fetchLiveJobs() {
+        const jobsListDiv = document.getElementById('liveJobsList');
+        if(!jobsListDiv) return;
+        try {
+            const { data: jobs, error } = await _supabase
+                .from('jobs')
+                .select('*')
+                .order('created_at', { ascending: false });
 
-            if (isSignUpMode) {
-                title.innerText = "NEXUS REGISTRATION";
-                subtitle.innerText = "সিস্টেমে আপনার ইমেইল বা ইউজারনেম দিয়ে নতুন নোড যুক্ত করুন";
-                submitBtn.innerText = "নতুন অ্যাকাউন্ট তৈরি করুন 🚀";
-                toggleText.innerText = "ইতিমধ্যে অ্যাকাউন্ট আছে?";
-                toggleLink.innerText = "Login";
-                authIcon.className = "fa-solid fa-user-plus text-emerald-400 text-3xl";
-            } else {
-                title.innerText = "KNWEB SECURE GATEWAY";
-                subtitle.innerText = "ঝিকরগাছা স্মার্ট ড্যাশবোর্ডে প্রবেশ করতে লগইন করুন";
-                submitBtn.innerText = "ড্যাশবোর্ড আনলক করুন 🔓";
-                toggleText.innerText = "নতুন অ্যাকাউন্ট তৈরি করতে চান?";
-                toggleLink.innerText = "Sign Up";
-                authIcon.className = "fa-solid fa-fingerprint text-emerald-400 text-3xl";
+            if (error) throw error;
+
+            if (!jobs || jobs.length === 0) {
+                jobsListDiv.innerHTML = `<p class="text-slate-500 text-center text-xs py-8">🚫 এই মুহূর্তে কোনো লাইভ বিজ্ঞপ্তি নেই।</p>`;
+                return;
             }
-            document.getElementById("auth-form").reset();
+
+            jobsListDiv.innerHTML = '';
+            jobs.forEach(job => {
+                const jobDate = new Date(job.created_at).toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' });
+                
+                const jobCard = `
+                    <div class="bg-slate-950/60 border-l-4 border-emerald-400 p-4 rounded-r-xl border-y border-r border-slate-900/50 hover:border-slate-800 transition duration-150 text-xs">
+                        <div class="flex justify-between items-start gap-2">
+                            <h4 class="text-slate-100 font-bold text-sm lg:text-base">${job.title}</h4>
+                            <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full whitespace-nowrap">📍 ${job.location}</span>
+                        </div>
+                        <h5 class="text-cyan-400 font-medium my-1">🏭 ${job.company_name}</h5>
+                        <p class="text-slate-300 text-[11px] leading-relaxed my-2 white-space-pre-line">${job.description}</p>
+                        <div class="flex justify-between items-center border-t border-slate-900/80 pt-2 text-[10px] text-slate-400">
+                            <span>💰 বেতন: <strong class="text-emerald-400 font-bold">${job.salary || 'আলোচনা সাপেক্ষে'}</strong></span>
+                            <span class="text-slate-500">${jobDate}</span>
+                        </div>
+                    </div>
+                `;
+                jobsListDiv.innerHTML += jobCard;
+            });
+        } catch (error) {
+            console.error("Error fetching jobs:", error);
+            jobsListDiv.innerHTML = `<p class="text-rose-500 text-center text-xs py-8">❌ ডেটা লোড করতে ব্যর্থ: ${error.message}</p>`;
         }
+    }
 
-        // ৩. সুপাবেস অথেনটিকেশন ও ডাটাবেজ কানেক্টর ইঞ্জিন
-        async function handleAuthEngine(event) {
-            event.preventDefault();
-            const emailOrUser = document.getElementById("auth-user").value.trim();
-            const pass = document.getElementById("auth-pass").value;
-            const errorBox = document.getElementById("auth-error");
-            const submitBtn = document.getElementById("auth-submit-btn");
+    // ৩. নতুন চাকরি সাবমিট
+    async function handleJobSubmit(event) {
+        event.preventDefault();
+        const submitBtn = document.getElementById('submitJobBtn');
+        const originalBtnText = submitBtn.innerText;
+        
+        const title = document.getElementById('jobTitle').value;
+        const company_name = document.getElementById('companyName').value;
+        const salary = document.getElementById('jobSalary').value;
+        const location = document.getElementById('jobLocation').value;
+        const description = document.getElementById('jobDescription').value;
 
-            // সুপাবেস ইমেইল ভ্যালিডেশন সাপোর্ট করে, তাই ইউজারনেম দিলে ভার্চুয়াল ডোমেইন যুক্ত করে নেওয়া হবে
-            const email = emailOrUser.includes('@') ? emailOrUser : `${emailOrUser}@nexus.com`;
-            const username = emailOrUser.split('@')[0];
+        try {
+            const { data: { user } } = await _supabase.auth.getUser();
+            if (!user) {
+                alert("⚠️ চাকরির বিজ্ঞপ্তি পোস্ট করতে হলে আপনাকে প্রথমে সিকিউর গেটওয়ে দিয়ে লগইন করতে হবে!");
+                return;
+            }
 
-            errorBox.classList.add("hidden");
-            submitBtn.innerText = "প্রসেসিং হচ্ছে...";
+            submitBtn.innerText = "পোস্ট হচ্ছে... ⏳";
             submitBtn.disabled = true;
 
-            if (isSignUpMode) {
-                // Supabase ক্লাউডে নতুন ইউজার রেজিস্ট্রেশন
-                const { data, error } = await _supabase.auth.signUp({ email, password: pass });
-                
-                if (error) {
-                    errorBox.innerText = `রেজিস্ট্রেশন ব্যর্থ: ${error.message}`;
-                    errorBox.classList.remove("hidden");
-                } else if (data.user) {
-                    alert("🎉 রেজিস্ট্রেশন সফল হয়েছে! অনুগ্রহ করে লগইন করুন।");
-                    toggleAuthMode();
-                }
-            } else {
-                // Supabase সিকিউর গেটওয়েতে লগইন লগ
-                const { data, error } = await _supabase.auth.signInWithPassword({ email, password: pass });
+            const { error } = await _supabase
+                .from('jobs')
+                .insert([{ 
+                    user_id: user.id, 
+                    title: title, 
+                    company_name: company_name, 
+                    description: description, 
+                    salary: salary, 
+                    location: location 
+                }]);
 
-                if (error) {
-                    errorBox.innerText = `লগইন ব্যর্থ: পাসওয়ার্ড বা ইউজারনেম ভুল হয়েছে!`;
-                    errorBox.classList.remove("hidden");
-                } else if (data.user) {
-                    currentUserSession = data.user;
-                    
-                    // ডাটাবেজ টেবিল থেকে ইউজার প্রোফাইল ডাটা রিড করা
-                    const { data: profile } = await _supabase.from('profiles').select('*').eq('id', data.user.id).single();
-                    
-                    if(profile) {
-                        document.getElementById("nav-credits").innerText = profile.jdc_credits + " JDC";
-                        document.getElementById("eco-credits").innerText = profile.jdc_credits + " JDC";
-                        document.getElementById("eco-waste-display").innerText = profile.eco_waste + " Kg";
-                    }
+            if (error) throw error;
 
-                    document.getElementById("auth-screen").classList.add("hidden");
-                    document.getElementById("main-dashboard").classList.remove("hidden");
-                    document.getElementById("active-user-display").innerText = username;
-                }
-            }
-            submitBtn.innerText = isSignUpMode ? "নতুন অ্যাকাউন্ট তৈরি করুন 🚀" : "ড্যাশবোর্ড আনলক করুন 🔓";
+            alert("🎉 অভিনন্দন! আপনার চাকরির বিজ্ঞপ্তিটি ঝিকরগাছা জোনে লাইভ সফলভাবে যুক্ত হয়েছে।");
+            document.getElementById('jobPostingForm').reset();
+            document.getElementById('jobLocation').value = "ঝিকরগাছা";
+            fetchLiveJobs();
+
+        } catch (error) {
+            console.error("Error inserting job:", error);
+            alert("❌ পোস্ট ব্যর্থ হয়েছে: " + error.message);
+        } finally {
+            submitBtn.innerText = originalBtnText;
             submitBtn.disabled = false;
         }
+    }
 
-        // ৪. ড্যাশবোর্ড সেশন অবসান বা লগআউট ইঞ্জিন
-        async function logoutEngine() {
-            await _supabase.auth.signOut();
-            currentUserSession = null;
-            document.getElementById("main-dashboard").classList.add("hidden");
-            document.getElementById("auth-screen").classList.remove("hidden");
-            document.getElementById("auth-form").reset();
-            if (isSignUpMode) toggleAuthMode();
+    // ৪. লগইন ও রেজিস্ট্রেশন উইন্ডো টগল
+    function toggleAuthMode(event) {
+        if(event) event.preventDefault();
+        isSignUpMode = !isSignUpMode;
+        const title = document.getElementById("auth-title");
+        const subtitle = document.getElementById("auth-subtitle");
+        const submitBtn = document.getElementById("auth-submit-btn");
+        const toggleText = document.getElementById("toggle-text");
+        const toggleLink = document.getElementById("toggle-link");
+        const authIcon = document.getElementById("auth-icon");
+        document.getElementById("auth-error").classList.add("hidden");
+
+        if (isSignUpMode) {
+            title.innerText = "NEXUS REGISTRATION";
+            subtitle.innerText = "সিস্টেমে আপনার ইমেইল বা ইউজারনেম দিয়ে নতুন নোড যুক্ত করুন";
+            submitBtn.innerText = "নতুন অ্যাকাউন্ট তৈরি করুন 🚀";
+            toggleText.innerText = "ইতিমধ্যে অ্যাকাউন্ট আছে?";
+            toggleLink.innerText = "Login";
+            authIcon.className = "fa-solid fa-user-plus text-emerald-400 text-3xl";
+        } else {
+            title.innerText = "KNWEB SECURE GATEWAY";
+            subtitle.innerText = "ঝিকরগাছা স্মার্ট ড্যাশবোর্ডে প্রবেশ করতে লগইন করুন";
+            submitBtn.innerText = "ড্যাশবোর্ড আনলক করুন 🔓";
+            toggleText.innerText = "নতুন অ্যাকাউন্ট তৈরি করতে চান?";
+            toggleLink.innerText = "Sign Up";
+            authIcon.className = "fa-solid fa-fingerprint text-emerald-400 text-3xl";
         }
+        document.getElementById("auth-form").reset();
+    }
 
-        // ৫. ট্যাব ভিউপোর্ট কন্ট্রোল মেকানিজম
-        function switchTab(targetTab) {
-            const tabs = ['dashboard', 'archive', 'market', 'jobs'];
-            tabs.forEach(tab => {
-                const viewNode = document.getElementById(`view-${tab}`);
-                const buttonNode = document.getElementById(`tab-${tab}`);
+    // ৫. সুপাবেস অথেনটিকেশন ইঞ্জিন
+    async function handleAuthEngine(event) {
+        event.preventDefault();
+        const emailOrUser = document.getElementById("auth-user").value.trim();
+        const pass = document.getElementById("auth-pass").value;
+        const errorBox = document.getElementById("auth-error");
+        const submitBtn = document.getElementById("auth-submit-btn");
+
+        const email = emailOrUser.includes('@') ? emailOrUser : `${emailOrUser}@nexus.com`;
+        const username = emailOrUser.split('@')[0];
+
+        errorBox.classList.add("hidden");
+        submitBtn.innerText = "প্রসেসিং হচ্ছে...";
+        submitBtn.disabled = true;
+
+        if (isSignUpMode) {
+            const { data, error } = await _supabase.auth.signUp({ email, password: pass });
+            
+            if (error) {
+                errorBox.innerText = `রেজিস্ট্রেশন ব্যর্থ: ${error.message}`;
+                errorBox.classList.remove("hidden");
+            } else if (data.user) {
+                alert("🎉 রেজিস্ট্রেশন সফল হয়েছে! অনুগ্রহ করে লগইন করুন।");
+                toggleAuthMode();
+            }
+        } else {
+            const { data, error } = await _supabase.auth.signInWithPassword({ email, password: pass });
+
+            if (error) {
+                errorBox.innerText = `লগইন ব্যর্থ: পাসওয়ার্ড বা ইউজারনেম ভুল হয়েছে!`;
+                errorBox.classList.remove("hidden");
+            } else if (data.user) {
+                currentUserSession = data.user;
+                
+                const { data: profile } = await _supabase.from('profiles').select('*').eq('id', data.user.id).single();
+                
+                if(profile) {
+                    document.getElementById("nav-credits").innerText = profile.jdc_credits + " JDC";
+                    document.getElementById("eco-credits").innerText = profile.jdc_credits + " JDC";
+                    document.getElementById("eco-waste-display").innerText = profile.eco_waste + " Kg";
+                }
+
+                document.getElementById("auth-screen").classList.add("hidden");
+                document.getElementById("main-dashboard").classList.remove("hidden");
+                document.getElementById("active-user-display").innerText = username;
+            }
+        }
+        submitBtn.innerText = isSignUpMode ? "নতুন অ্যাকাউন্ট তৈরি করুন 🚀" : "ড্যাশবোর্ড আনলক করুন 🔓";
+        submitBtn.disabled = false;
+    }
+
+    // ৬. লগআউট ইঞ্জিন
+    async function logoutEngine() {
+        await _supabase.auth.signOut();
+        currentUserSession = null;
+        document.getElementById("main-dashboard").classList.add("hidden");
+        document.getElementById("auth-screen").classList.remove("hidden");
+        document.getElementById("auth-form").reset();
+        if (isSignUpMode) toggleAuthMode();
+    }
+
+    // ৭. ট্যাব ভিউপোর্ট কন্ট্রোল
+    function switchTab(targetTab) {
+        const tabs = ['dashboard', 'archive', 'market', 'jobs'];
+        tabs.forEach(tab => {
+            const viewNode = document.getElementById(`view-${tab}`);
+            const buttonNode = document.getElementById(`tab-${tab}`);
+            if(viewNode && buttonNode) {
                 if (tab === targetTab) {
                     viewNode.classList.remove("hidden");
                     buttonNode.className = "active-tab px-5 py-3 text-xs font-medium rounded-xl transition-all cursor-pointer flex items-center space-x-2";
@@ -542,92 +693,101 @@
                     viewNode.classList.add("hidden");
                     buttonNode.className = "px-5 py-3 text-xs font-medium rounded-xl text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 transition-all cursor-pointer flex items-center space-x-2";
                 }
-            });
-        }
-
-        // ৬. স্মার্ট মার্কেট রিয়েলটাইম সার্চ ফিল্টার
-        function filterMarketEngine() {
-            const query = document.getElementById("market-search").value.toLowerCase();
-            const rows = document.getElementsByClassName("item-row");
-            for (let i = 0; i < rows.length; i++) {
-                const itemName = rows[i].getElementsByClassName("item-name")[0].innerText.toLowerCase();
-                rows[i].style.display = itemName.includes(query) ? "" : "none";
             }
+        });
+    }
+
+    // ৮. রিয়েলটাইম সার্চ ফিল্টার
+    function filterMarketEngine() {
+        const query = document.getElementById("market-search").value.toLowerCase();
+        const rows = document.getElementsByClassName("item-row");
+        for (let i = 0; i < rows.length; i++) {
+            const itemName = rows[i].getElementsByClassName("item-name")[0].innerText.toLowerCase();
+            rows[i].style.display = itemName.includes(query) ? "" : "none";
+        }
+    }
+
+    // ৯. ইকো-টোকেন ব্যালেন্স ইঞ্জিন ও সুপাবেস ক্লাউড সেভ
+    async function addEcoTokens() {
+        if(!currentUserSession) {
+            alert("⚠️ অনুগ্রহ করে আগে লগইন করুন!");
+            return;
         }
 
-        // ৭. ইকো-টোকেন ব্যালেন্স ইঞ্জিন এবং সুপাবেস রিয়েল-টাইম ক্লাউড সেভ
-        async function addEcoTokens() {
-            if(!currentUserSession) return;
+        const select = document.getElementById("waste-select");
+        const tokenValue = parseInt(select.value);
+        
+        const currentCreditsNode = document.getElementById("eco-credits");
+        const navCreditsNode = document.getElementById("nav-credits");
+        const wasteDisplay = document.getElementById("eco-waste-display");
 
-            const select = document.getElementById("waste-select");
-            const tokenValue = parseInt(select.value);
-            
-            const currentCreditsNode = document.getElementById("eco-credits");
-            const navCreditsNode = document.getElementById("nav-credits");
-            const wasteDisplay = document.getElementById("eco-waste-display");
+        let currentCredits = parseInt(currentCreditsNode.innerText) || 0;
+        let currentWaste = parseFloat(wasteDisplay.innerText) || 0;
 
-            let currentCredits = parseInt(currentCreditsNode.innerText);
-            let currentWaste = parseFloat(wasteDisplay.innerText);
+        let newCredits = currentCredits + tokenValue;
+        let newWaste = parseFloat((currentWaste + (tokenValue / 10)).toFixed(1));
 
-            let newCredits = currentCredits + tokenValue;
-            let newWaste = parseFloat((currentWaste + (tokenValue / 10)).toFixed(1));
+        currentCreditsNode.innerText = newCredits + " JDC";
+        if(navCreditsNode) navCreditsNode.innerText = newCredits + " JDC";
+        wasteDisplay.innerText = newWaste + " Kg";
 
-            // লাইভ UI রেন্ডারিং আপডেট
-            currentCreditsNode.innerText = newCredits + " JDC";
-            navCreditsNode.innerText = newCredits + " JDC";
-            wasteDisplay.innerText = newWaste + " Kg";
+        const { error } = await _supabase
+            .from('profiles')
+            .update({ jdc_credits: newCredits, eco_waste: newWaste })
+            .eq('id', currentUserSession.id);
 
-            // Supabase প্রোফাইল আপডেট কুয়েরি রান
-            const { error } = await _supabase
-                .from('profiles')
-                .update({ jdc_credits: newCredits, eco_waste: newWaste })
-                .eq('id', currentUserSession.id);
+        if(!error) {
+            alert(`♻️ ক্লাউড ডাটাবেজ সিঙ্কড! আপনার সুপাবেস অ্যাকাউন্টে +${tokenValue} JDC ক্রেডিট সুরক্ষিত করা হয়েছে।`);
+        } else {
+            alert("ক্লাউড ডাটাবেজ ট্র্যাকিং সিঙ্ক করতে সমস্যা হয়েছে!");
+        }
+    }
 
-            if(!error) {
-                alert(`♻️ ক্লাউড ডাটাবেজ সিঙ্কড! আপনার সুপাবেস অ্যাকাউন্টে +${tokenValue} JDC ক্রেডিট সুরক্ষিত করা হয়েছে।`);
+    // ১০. নিও লার্ন মোড চেঞ্জার
+    function changeLMode(mode) {
+        learningMode = mode;
+        const comicBtn = document.getElementById("m-comic");
+        const scifiBtn = document.getElementById("m-scifi");
+        if(mode === 'comic') {
+            comicBtn.className = "flex-1 bg-blue-500/20 border border-blue-500/40 text-blue-400 p-2 rounded-lg text-[10px] font-bold cursor-pointer";
+            scifiBtn.className = "flex-1 bg-slate-950 text-slate-400 p-2 rounded-lg text-[10px] font-bold cursor-pointer";
+        } else {
+            scifiBtn.className = "flex-1 bg-blue-500/20 border border-blue-500/40 text-blue-400 p-2 rounded-lg text-[10px] font-bold cursor-pointer";
+            comicBtn.className = "flex-1 bg-slate-950 text-slate-400 p-2 rounded-lg text-[10px] font-bold cursor-pointer";
+        }
+    }
+
+    // ১১. নিও লার্ন রান ইঞ্জিন (AI simulation)
+    function runAiLearn() {
+        const input = document.getElementById("learn-input").value.trim();
+        const output = document.getElementById("learn-output");
+        if(!input) return;
+
+        output.innerText = "🧠 কগনিটিভ ম্যাট্রিক্স প্রসেসিং হচ্ছে...";
+        setTimeout(() => {
+            if(learningMode === 'comic') {
+                output.innerText = `💥 [কমিক মোড] ওরেব্বাস! তোরা কি জানিস—"${input}" আসলে একটা সুপারহিরো কোয়ান্টাম গ্যাজেটের মতো কাজ করে! এটা মূলত মহাবিশ্বের সিক্রেট এনার্জিকে এক ক্লিকে প্যাক করে ফেলে!`;
             } else {
-                alert("ক্লাউড ডাটাবেজ ট্র্যাকিং সিঙ্ক করতে সমস্যা হয়েছে!");
+                output.innerText = `🌌 [সাই-ফাই মোড] সাব-অ্যাটমিক স্পেস এনকোডিং সাকসেসফুল। "${input}" এর ডাটা স্ট্রাকচারটি হাইপার-লুপ ডাইমেনশনে সিন্থেসাইজ করা হয়েছে। এটি কোয়ান্টাম নোডের মাধ্যমে এনার্জি গ্রিড নিয়ন্ত্রণ করছে।`;
             }
+        }, 1200);
+    }
+
+    // ১২. ভয়েস অফ জাস্টিস রান ইঞ্জিন (AI simulation)
+    function runAiJustice() {
+        const input = document.getElementById("justice-input").value.trim();
+        const output = document.getElementById("justice-output");
+        if(!input) {
+            alert("অনুগ্রহ করে অভিযোগ বা বিবরণটি লিখুন।");
+            return;
         }
 
-        // ৮. নিও লার্ন কগনিটিভ ম্যাট্রিক্স
-        function changeLMode(mode) {
-            learningMode = mode;
-            const comicBtn = document.getElementById("m-comic");
-            const scifiBtn = document.getElementById("m-scifi");
-            if(mode === 'comic') {
-                comicBtn.className = "flex-1 bg-blue-500/20 border border-blue-500/40 text-blue-400 p-2 rounded-lg text-[10px] font-bold cursor-pointer";
-                scifiBtn.className = "flex-1 bg-slate-950 text-slate-400 p-2 rounded-lg text-[10px] font-bold cursor-pointer";
-            } else {
-                scifiBtn.className = "flex-1 bg-blue-500/20 border border-blue-500/40 text-blue-400 p-2 rounded-lg text-[10px] font-bold cursor-pointer";
-                comicBtn.className = "flex-1 bg-slate-950 text-slate-400 p-2 rounded-lg text-[10px] font-bold cursor-pointer";
-            }
-        }
-
-        function runAiLearn() {
-            const input = document.getElementById("learn-input").value.trim();
-            const output = document.getElementById("learn-output");
-            if(!input) return alert("অনুগ্রহ করে কিছু টাইপ করুন!");
-            output.innerText = "এআই ম্যাট্রিক্স প্রসেস করা হচ্ছে...";
-            setTimeout(() => {
-                output.innerText = learningMode === 'comic' 
-                    ? `💥 [কমিক মোড]: শোনো বন্ধু! তুমি জানতে চেয়েছ "${input}" নিয়ে? এটা আসলে একটা সুপারহিরো গ্যাজেটের মতো কাজ করে! যেমন ইলেকট্রনগুলো যেন এক একটা স্পিডস্টার ফ্ল্যাশ, যারা একই সাথে দুই জায়গায় দৌড়াচ্ছে!` 
-                    : `🌌 [সাই-ফাই মোড]: স্টারডেট ২০২৬.০৮। সাব-স্পেস নোড রিডআউট নির্দেশ করছে যে "${input}" থিওরিটি আমাদের কোয়ান্টাম রিয়েলিটি বা টাইম-লাইন লুপকে অল্টার করতে সক্ষম। এটি একটি কসমিক এনার্জি ডাইভার্সন।`;
-            }, 800);
-        }
-
-        // ৯. ভয়েস অফ জাস্টিস সেফ ব্রডকাস্টার
-        function runAiJustice() {
-            const input = document.getElementById("justice-input").value.trim();
-            const output = document.getElementById("justice-output");
-            if(!input) return alert("অনুগ্রহ করে বিবরণ লিখুন!");
-            output.innerText = "🔒 আপনার ডাটা কোয়ান্টাম ক্রিপ্টোগ্রাফি দিয়ে এনক্রিপ্ট করা হচ্ছে...";
-            output.classList.remove("hidden");
-            setTimeout(() => {
-                output.innerHTML = `<span class="text-emerald-400 font-bold">✓ সফলভাবে ব্রডকাস্টেড!</span> আপনার বার্তা সম্পূর্ণ বেনামে সেন্ট্রাল লেজারে পাঠিয়ে দেওয়া হয়েছে। ব্লকচেইন ট্র্যাকিং আইডি: <span class="font-orbitron text-amber-400">#KN-${Math.floor(Math.random()*900000)+100000}</span>`;
-                document.getElementById("justice-input").value = "";
-            }, 1200);
-        }
-    </script>
-</body>
-</html>
+        output.classList.remove("hidden");
+        output.innerText = "🔒 আপনার পরিচয় এনক্রিপ্ট করা হচ্ছে এবং সিকিউর লেজারে ব্রডকাস্টের জন্য প্রসেস হচ্ছে...";
+        
+        setTimeout(() => {
+            output.innerHTML = `<span class="text-emerald-400 font-bold">✓ ব্রডকাস্ট সাকসেসফুল!</span> এনক্রিপ্টেড ব্লকচেইন লেজারে ডাটা সাবমিট করা হয়েছে। আপনার নোড আইডি ও আইপি সম্পূর্ণ মাস্কড (গোপন) রাখা হয়েছে।`;
+            document.getElementById("justice-input").value = '';
+        }, 2000);
+    }
+</script>
