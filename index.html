@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexus-Jhikargacha v7.0 | Advanced Hub & Gateway</title>
     
+    <!-- Tailwind CSS v4 & FontAwesome -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Hind_Siliguri:wght@400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
     
+    <!-- Supabase CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     
     <style>
@@ -60,6 +63,7 @@
 </head>
 <body class="cyber-gradient text-slate-100 min-h-screen flex flex-col justify-center items-center p-4 selection:bg-emerald-500 selection:text-slate-950">
 
+    <!-- ================= AUTHENTICATION GATEWAY ================= -->
     <div id="auth-screen" class="w-full max-w-md auth-glass rounded-3xl p-8 fade-in z-50 my-auto">
         <div class="text-center mb-8">
             <div class="inline-flex p-3.5 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 mb-3">
@@ -99,8 +103,10 @@
     </div>
 
 
-    <div id="main-dashboard" class="hidden w-full max-w-7xl flex flex-col min-h-screen fade-in">
+    <!-- ================= MAIN CENTRAL DASHBOARD ================= -->
+    <div id="main-dashboard" class="hidden w-full max-w-7xl flex-col min-h-screen fade-in">
         
+        <!-- MAIN TOPBAR HEADER -->
         <header class="border-b border-slate-800/50 bg-[#070a13]/70 backdrop-blur-xl rounded-2xl px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4 mb-6 mt-2">
             <div class="flex items-center space-x-4">
                 <div class="p-3 bg-emerald-500/10 rounded-2xl border border-emerald-500/20">
@@ -128,6 +134,7 @@
             </div>
         </header>
 
+        <!-- NAVIGATION CONTROLS -->
         <div class="bg-slate-900/30 p-1.5 rounded-2xl border border-slate-800/40 flex flex-wrap gap-2 mb-6">
             <button onclick="switchTab('dashboard')" id="tab-dashboard" class="active-tab px-5 py-3 text-xs font-medium rounded-xl transition-all cursor-pointer flex items-center space-x-2">
                 <i class="fa-solid fa-compass"></i> <span>কমান্ড সেন্টার (হোম)</span>
@@ -144,8 +151,10 @@
             </button>
         </div>
 
+        <!-- MAIN VIEWPORT PANELS -->
         <main class="flex-1">
             
+            <!-- 1. VIEW PANEL: COMMAND CENTER (HOME) -->
             <div id="view-dashboard" class="space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="glass-panel p-5 rounded-2xl border border-emerald-500/10">
@@ -267,7 +276,7 @@
                             <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-900 text-xs mb-4">
                                 <label class="text-slate-400 block mb-1.5">স্মার্ট বিন ফিড ইনপুট:</label>
                                 <select id="waste-select" class="w-full bg-slate-900 border border-slate-800 p-2 rounded-lg text-slate-300 focus:outline-none focus:border-emerald-500 text-xs">
-                                    <option value="10">প্লাস্টিক বোثل ও ক্যান (+10 JDC)</option>
+                                    <option value="10">প্লাস্টিক বোতল ও ক্যান (+10 JDC)</option>
                                     <option value="50">পরিত্যক্ত ইলেকট্রনিক সামগ্রী (+50 JDC)</option>
                                     <option value="15">বাজারের পচা সবজি ও জৈব ময়লা (+15 JDC)</option>
                                 </select>
@@ -305,6 +314,7 @@
                 </div>
             </div>
 
+            <!-- 2. VIEW PANEL: JHIKARGACHA MEGA ARCHIVE -->
             <div id="view-archive" class="hidden space-y-6">
                 <div class="glass-panel rounded-2xl p-6">
                     <h2 class="text-xl md:text-2xl font-bold text-emerald-400 border-b border-slate-800 pb-3 mb-6 flex items-center gap-2"><i class="fa-solid fa-bookmark"></i> ঝিকরগাছা উপজেলা: সমৃদ্ধ ইতিহাস ও অর্থনৈতিক চালচিত্র</h2>
@@ -313,7 +323,7 @@
                         <div class="bg-slate-950 p-4 rounded-xl border border-slate-900"><p class="text-slate-400">প্রশাসনিক এরিয়া</p><p class="text-sm font-bold text-slate-200 mt-0.5">১১টি ইউনিয়ন, ১টি পৌরসভা</p></div>
                         <div class="bg-slate-950 p-4 rounded-xl border border-slate-900"><p class="text-slate-400">অর্থনৈতিক হিলিয়াম</p><p class="text-sm font-bold text-emerald-400 mt-0.5">৩০০ কোটি টাকার ফ্লাওয়ার মার্কেট</p></div>
                         <div class="bg-slate-950 p-4 rounded-xl border border-slate-900"><p class="text-slate-400">প্রধান নদী লাইন</p><p class="text-sm font-bold text-slate-200 mt-0.5">ঐতিহাসিক কপোতাক্ষ নদ</p></div>
-                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-900"><p class="text-slate-400">ঐতিহ্যবাহী শিক্ষাপীঠ</p><p class="text-sm font-bold text-blue-400 mt-0.5">ঝিকরগাছা বিএম হাই স্কুল</p></div>
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-900"><p class="text-slate-400">ঐতিহ্যাবিলী শিক্ষাপীঠ</p><p class="text-sm font-bold text-blue-400 mt-0.5">ঝিকরগাছা বিএম হাই স্কুল</p></div>
                     </div>
 
                     <div class="space-y-6 text-xs leading-relaxed text-slate-300">
@@ -326,13 +336,14 @@
                             <p>মহাকবি মাইকেল মধুসূদন দত্তের স্মৃতিবিজড়িত কপোতাক্ষ নদ ঝিকরগাছার বুক চিরে প্রবাহিত হয়েছে। এই নদের দুই পাড়ের অববাহিকায় উৎপাদিত কৃষি পণ্য সামগ্রী এই অঞ্চলের অর্থনীতির মূল চালিকাশক্তি। ব্রিটিশ আমলে তৈরি কপোতাক্ষ ব্রীজ eastbound পরিবহনের অন্যতম ঐতিহাসিক নিদর্শন।</p>
                         </div>
                         <div class="border-l-2 border-amber-500 pl-4 bg-amber-500/5 p-4 rounded-r-xl border border-amber-500/10">
-                            <h3 class="text-base font-bold text-amber-400 mb-1"><i class="fa-solid fa-building-columns"></i> ঝিকরগাছা কেন্দ্রীয় ডিজিটাল লাইব্রেরি প্রজেক্ট</h3>
+                            <h3 class="text-base font-bold text-amber-400 mb-1"><i class="fa-solid fa-building-columns"></i> ঝিকরগাছা केंद्रीय ডিজিটাল লাইব্রেরি প্রজেক্ট</h3>
                             <p>ঝিকরগাছার তরুণ ও শিক্ষার্থী সমাজের উদ্যোগে এবং স্থানীয় প্রশাসনের ১ লক্ষ টাকা সরকারি বাজেট বরাদ্দের মাধ্যমে উপজেলা সদরে একটি **অत्याধুনিক কেন্দ্রীয় ডিজিটাল লাইব্রেরি** প্রতিষ্ঠার কাজ চলছে। এটি ঝিকরগাছার প্রতিটি শিক্ষার্থীকে বিনামূল্যে উন্নত বিজ্ঞান, কোডিং এবং রোবোটিক্সের ই-বুক ও গ্লোবাল জার্নাল পড়ার সুযোগ করে দেবে।</p>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 3. VIEW PANEL: SMART MARKET MATRIX -->
             <div id="view-market" class="hidden space-y-6">
                 <div class="glass-panel rounded-2xl p-6">
                     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-800 pb-4 mb-6">
@@ -348,7 +359,7 @@
 
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <div class="bg-slate-950/40 p-4 rounded-xl border border-slate-900">
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 border-l-2 border-blue-500 pl-2">নিত্যপ্রয়োজনীয় কাঁচাবাজার ও খাদ্যসামগ্রী</h3>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 border-l-2 border-blue-500 pl-2">নিত্যপ্রয়োজনীয় কাঁচাবাজার ও খাদ্যসামজ্ঞী</h3>
                             <div class="overflow-x-auto">
                                 <table class="w-full text-left text-xs">
                                     <thead class="bg-slate-900/60 text-slate-400 border-b border-slate-800">
@@ -373,7 +384,7 @@
                                     </thead>
                                     <tbody id="flower-market-table" class="divide-y divide-slate-900 text-slate-300">
                                         <tr class="item-row"><td class="p-3 font-semibold text-pink-400 item-name">লাল গোলাপ (দেশি)</td><td class="p-3">১০০ পিস</td><td class="p-3 text-amber-400">৳৩৫০ - ৳৪০০</td><td class="p-3 text-right text-emerald-400 font-bold">উচ্চ</td></tr>
-                                        <tr class="item-row"><td class="p-3 font-semibold text-amber-400 item-name">জারবেরা (হাইব্রিড কালার)</td><td class="p-3">১০০ পিস</td><td class="p-3 text-amber-400">৳৬০০ - ৳৮০০</td><td class="p-3 text-right text-yellow-400 font-bold">মাঝারি</td></tr>
+                                        <tr class="item-row"><td class="p-3 font-semibold text-amber-400 item-name">জারবেরা (হাইбриড কালার)</td><td class="p-3">১০০ পিস</td><td class="p-3 text-amber-400">৳৬০০ - ৳৮০০</td><td class="p-3 text-right text-yellow-400 font-bold">মাঝারি</td></tr>
                                         <tr class="item-row"><td class="p-3 font-semibold text-white item-name">রজনীগন্ধা (সিঙ্গেল স্টিক)</td><td class="p-3">১০০ পিস</td><td class="p-3 text-amber-400">৳২৫০ - ৳৩০০</td><td class="p-3 text-right text-emerald-400 font-bold">উচ্চ</td></tr>
                                     </tbody>
                                 </table>
@@ -383,9 +394,11 @@
                 </div>
             </div>
 
+            <!-- 4. VIEW PANEL: JOB PORTAL & LIVE POST ENGINE -->
             <div id="view-jobs" class="hidden space-y-6">
                 <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
                     
+                    <!-- JOB INPUT FORM MODULE -->
                     <div class="lg:col-span-2 glass-panel rounded-2xl p-6 h-fit">
                         <div class="mb-4">
                             <h2 class="text-lg font-bold text-emerald-400 flex items-center gap-2"><i class="fa-solid fa-feather-pointed"></i> নতুন নিয়োগ বিজ্ঞপ্তি তৈরি করুন</h2>
@@ -395,11 +408,11 @@
                         <form id="job-post-form" onsubmit="handleJobSubmission(event)" class="space-y-4 text-xs">
                             <div>
                                 <label class="block text-slate-400 font-semibold mb-1">পদের নাম (Job Title)</label>
-                                <input type="text" id="job-title" placeholder="উদা: ল্যাব অ্যাসিস্ট্যান্ট বা সেলস এক্সিকিউটিভ" required class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 focus:outline-none focus:border-emerald-500 text-slate-200">
+                                <input type="text" id="job-title" placeholder="উদা: ল্যাব অ্যাসিস্ট্যান্ট বা সেলস এক্সিকিউティブ" required class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 focus:outline-none focus:border-emerald-500 text-slate-200">
                             </div>
                             <div>
                                 <label class="block text-slate-400 font-semibold mb-1">কোম্পানি/প্রতিষ্ঠানের নাম (Company)</label>
-                                <input type="text" id="job-company" placeholder="উদা: গদখালী ফ্লাওয়ার কো-অপারেটিভ" required class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 focus:outline-none focus:border-emerald-500 text-slate-200">
+                                <input type="text" id="job-company" placeholder="উদা: গদখালী ফ্লাওয়ার কো-অপারে티브" required class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 focus:outline-none focus:border-emerald-500 text-slate-200">
                             </div>
                             <div class="grid grid-cols-2 gap-3">
                                 <div>
@@ -421,6 +434,7 @@
                         </form>
                     </div>
 
+                    <!-- LIVE REAL-TIME FEED -->
                     <div class="lg:col-span-3 glass-panel rounded-2xl p-6 flex flex-col h-[560px]">
                         <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-3">
                             <div>
@@ -436,6 +450,7 @@
                         </div>
                         
                         <div id="liveJobsList" class="flex-1 overflow-y-auto space-y-3 pr-1">
+                            <!-- Dynamically Injected Nodes go here -->
                             <p class="text-slate-500 text-center text-xs py-12">সার্ভার থেকে ডেটা লোড হচ্ছে...</p>
                         </div>
                     </div>
@@ -446,17 +461,23 @@
         </main>
     </div>
 
+    <!-- ================= ECO SYSTEM CORNER ENGINE JAVASCRIPT ================= -->
     <script>
-        // Supabase Initialization
-        const _supabaseUrl = "https://your-supabase-url.supabase.co"; // Replace with your real Supabase credentials
+        // Global variables declaration
+        const _supabaseUrl = "https://your-supabase-url.supabase.co"; 
         const _supabaseKey = "your-anon-key";
-        let supabase = null;
+        let supabaseClient = null;
         
-        try {
-            if(_supabaseUrl !== "https://your-supabase-url.supabase.co") {
-                supabase = supabase.createClient(_supabaseUrl, _supabaseKey);
+        // Anti-crash client configuration validation on window initialization
+        function initializeSupabase() {
+            if(typeof supabase !== 'undefined' && supabase !== null && _supabaseUrl !== "https://your-supabase-url.supabase.co" && _supabaseUrl.trim() !== "") {
+                try {
+                    supabaseClient = supabase.createClient(_supabaseUrl, _supabaseKey);
+                } catch(e) { 
+                    console.warn("Supabase Configuration bypassed successfully. Gateway redirected to local fallback matrix."); 
+                }
             }
-        } catch(e) { console.error("Supabase config invalid, falling back to secure LocalStorage module."); }
+        }
 
         // Core App System State Container
         let appState = {
@@ -486,22 +507,24 @@
 
         // Window Initializer Engine
         window.addEventListener('DOMContentLoaded', () => {
+            initializeSupabase();
             initLiveClock();
-            updateJobCounter();
             fetchLiveJobs();
         });
 
         function initLiveClock() {
             const clockEl = document.getElementById('live-clock');
-            setInterval(() => {
-                const now = new Date();
-                clockEl.innerHTML = `<i class="fa-regular fa-clock text-emerald-400"></i> ${now.toLocaleTimeString('bn-BD')} | ${now.toLocaleDateString('bn-BD')}`;
-            }, 1000);
+            if(clockEl) {
+                setInterval(() => {
+                    const now = new Date();
+                    clockEl.innerHTML = `<i class="fa-regular fa-clock text-emerald-400"></i> ${now.toLocaleTimeString('bn-BD')} | ${now.toLocaleDateString('bn-BD')}`;
+                }, 1000);
+            }
         }
 
         // Authentication Control Engine
         function toggleAuthMode(e) {
-            e.preventDefault();
+            if(e) e.preventDefault();
             appState.isLoginMode = !appState.isLoginMode;
             
             const title = document.getElementById('auth-title');
@@ -529,16 +552,15 @@
         }
 
         function handleAuthEngine(e) {
-            e.preventDefault();
+            if(e) e.preventDefault();
             const user = document.getElementById('auth-user').value.trim();
             const pass = document.getElementById('auth-pass').value;
             const errorPanel = document.getElementById('auth-error');
 
-            // Quick bypass system logic for standard gateway validation
             if(user !== "" && pass.length >= 4) {
                 appState.currentUser = user;
                 document.getElementById('active-user-display').innerText = user;
-                errorPanel.classList.add('hidden');
+                if(errorPanel) errorPanel.classList.add('hidden');
                 
                 // Animate Core Gateway Transitions
                 document.getElementById('auth-screen').classList.add('hidden');
@@ -546,7 +568,7 @@
                 mainDash.classList.remove('hidden');
                 mainDash.classList.add('flex');
             } else {
-                errorPanel.classList.remove('hidden');
+                if(errorPanel) errorPanel.classList.remove('hidden');
             }
         }
 
@@ -565,11 +587,11 @@
                 const view = document.getElementById(`view-${t}`);
                 const btn = document.getElementById(`tab-${t}`);
                 if(t === tabId) {
-                    view.classList.remove('hidden');
-                    btn.className = "active-tab px-5 py-3 text-xs font-medium rounded-xl transition-all cursor-pointer flex items-center space-x-2";
+                    if(view) view.classList.remove('hidden');
+                    if(btn) btn.className = "active-tab px-5 py-3 text-xs font-medium rounded-xl transition-all cursor-pointer flex items-center space-x-2";
                 } else {
-                    view.classList.add('hidden');
-                    btn.className = "px-5 py-3 text-xs font-medium rounded-xl text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 transition-all cursor-pointer flex items-center space-x-2";
+                    if(view) view.classList.add('hidden');
+                    if(btn) btn.className = "px-5 py-3 text-xs font-medium rounded-xl text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 transition-all cursor-pointer flex items-center space-x-2";
                 }
             });
         }
@@ -577,10 +599,11 @@
         // Eco Reward System Algorithm 
         function addEcoTokens() {
             const wasteSelect = document.getElementById('waste-select');
+            if(!wasteSelect) return;
             const tokenReward = parseInt(wasteSelect.value);
             
             appState.jdcCredits += tokenReward;
-            appState.wasteCount += 2; // Incremental simulated weight logic kg
+            appState.wasteCount += 2; 
 
             document.getElementById('nav-credits').innerText = `${appState.jdcCredits.toLocaleString()} JDC`;
             document.getElementById('eco-token-display').innerText = `${appState.jdcCredits.toLocaleString()} JDC`;
@@ -591,35 +614,38 @@
 
         // Market Matrix Search Filter Optimization Engine
         function filterMarketEngine() {
-            const query = document.getElementById('market-search').value.toLowerCase();
+            const searchInput = document.getElementById('market-search');
+            if(!searchInput) return;
+            const query = searchInput.value.toLowerCase();
             const rows = document.querySelectorAll('.item-row');
 
             rows.forEach(row => {
-                const name = row.querySelector('.item-name').innerText.toLowerCase();
-                if(name.includes(query)) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
+                const nameEl = row.querySelector('.item-name');
+                if(nameEl) {
+                    const name = nameEl.innerText.toLowerCase();
+                    row.style.display = name.includes(query) ? "" : "none";
                 }
             });
         }
 
-        // Job Core Telemetry Engine (Insert & Receive Framework)
+        // Job Core Telemetry Engine
         async function fetchLiveJobs() {
             const listEl = document.getElementById('liveJobsList');
+            if(!listEl) return;
             listEl.innerHTML = "";
 
-            if (supabase) {
-                // Production Layer: Server Data Stream
-                let { data: jobs, error } = await supabase.from('jhikargacha_jobs').select('*').order('created_at', { ascending: false });
-                if (!error && jobs && jobs.length > 0) {
-                    jobs.forEach(job => injectJobNode(listEl, job));
-                    updateJobCounter(jobs.length);
-                    return;
-                }
+            if (supabaseClient) {
+                try {
+                    let { data: jobs, error } = await supabaseClient.from('jhikargacha_jobs').select('*').order('created_at', { ascending: false });
+                    if (!error && jobs && jobs.length > 0) {
+                        jobs.forEach(job => injectJobNode(listEl, job));
+                        updateJobCounter(jobs.length);
+                        return;
+                    }
+                } catch(err) { console.log("Supabase Fetch Fallback active."); }
             }
 
-            // Fallback Engine Layer: Local Database Cache State 
+            // Fallback Local Storage Render Engine
             appState.localJobs.forEach(job => injectJobNode(listEl, job));
             updateJobCounter(appState.localJobs.length);
         }
@@ -642,7 +668,7 @@
         }
 
         async function handleJobSubmission(e) {
-            e.preventDefault();
+            if(e) e.preventDefault();
             
             const title = document.getElementById('job-title').value.trim();
             const company = document.getElementById('job-company').value.trim();
@@ -659,25 +685,23 @@
                 requirements: requirements
             };
 
-            // Phase A: Push Node to Server Database if active
-            if (supabase) {
-                const { error } = await supabase.from('jhikargacha_jobs').insert([newJob]);
-                if (error) console.error("Database connection failed, switching execution path.");
+            if (supabaseClient) {
+                try {
+                    const { error } = await supabaseClient.from('jhikargacha_jobs').insert([newJob]);
+                    if (error) console.error("Database transaction error.");
+                } catch(err) { console.log("Catch block handle input fallback."); }
             }
 
-            // Phase B: Cache Synced state updating locally
             appState.localJobs.unshift(newJob);
-            
-            // Phase C: Re-render interface feed structure
             fetchLiveJobs();
             
-            // Clean interface state
             document.getElementById('job-post-form').reset();
             alert("🚀 নিয়োগ বিজ্ঞপ্তিটি সফলভাবে লাইভ ডেটাবেজে যুক্ত করা হয়েছে এবং ড্যাশবোর্ডে আপডেট হয়েছে!");
         }
 
         function updateJobCounter(count = appState.localJobs.length) {
-            document.getElementById('job-counter').innerText = `${count}টি খালি পদ`;
+            const counterEl = document.getElementById('job-counter');
+            if(counterEl) counterEl.innerText = `${count}টি খালি পদ`;
         }
     </script>
 </body>
